@@ -3,155 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALETIA OS - Acceso al Sistema</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Aletia OS | Sistema de Reprogramación</title>
+    <meta name="google-site-verification" content="IF5z11NeBRxj1DKmsv2FAlSrmzlJ2c_AIEWxmG6M6nk" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --azul-oscuro: #010718;
-            --azul-acento: #003366;
-            --blanco: #ffffff;
-            --gris-claro: #f4f7f6;
+            --bg: #050505;
+            --accent-blue: #1CB5E0;
+            --accent-purple: #7c3aed;
+            --sidebar-w: 280px;
         }
 
         body {
+            background-color: var(--bg);
+            color: #fff;
             margin: 0;
-            padding: 0;
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--gris-claro);
+            font-family: 'Segoe UI', sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            color: var(--azul-oscuro);
+            overflow: hidden;
         }
 
-        /* Contenedor tipo Pantalla de Login */
-        .login-card {
-            background: var(--blanco);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-            border-top: 5px solid var(--azul-oscuro);
+        /* MENÚ LATERAL */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid rgba(28, 181, 224, 0.2);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+            justify-content: center;
+            z-index: 10;
         }
 
-        .logo-space {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            color: var(--azul-oscuro);
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: #666;
+        .menu-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: var(--accent-blue);
+            letter-spacing: 3px;
             margin-bottom: 30px;
             text-transform: uppercase;
         }
 
-        /* Estética de campos de texto (Solo visual) */
-        .input-group {
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 15px;
             margin-bottom: 15px;
             text-align: left;
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background: #fafafa;
-        }
-
-        /* BOTONES DE ACCIÓN */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 4px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 8px;
             transition: all 0.3s;
-            cursor: pointer;
-            border: none;
+            display: flex;
+            align-items: center;
         }
 
-        /* Botón Principal - HOTMART */
-        .btn-primary {
-            background-color: var(--azul-oscuro);
-            color: var(--blanco);
+        .nav-btn:hover {
+            background: rgba(28, 181, 224, 0.1);
+            border-color: var(--accent-blue);
+            transform: translateX(10px);
         }
 
-        .btn-primary:hover {
-            background-color: var(--azul-acento);
-            transform: translateY(-2px);
+        /* ÁREA CENTRAL HERO */
+        .main-stage {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        /* Botón Secundario - AMAZON */
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--azul-oscuro);
-            border: 2px solid var(--azul-oscuro);
+        .brand-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .btn-secondary:hover {
-            background-color: #eee;
+        .logo-center {
+            width: 150px; /* Tamaño del cuadrado de pinceladas */
+            height: 150px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(28, 181, 224, 0.4));
         }
 
-        .footer-text {
+        h1.big-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 900;
+            margin: 0;
+            line-height: 0.85;
+            background: linear-gradient(180deg, #fff 30%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -5px;
+        }
+
+        /* Estilo para el formulario dentro del menú o flotante */
+        .jotform-side {
             margin-top: 30px;
-            font-size: 11px;
-            color: #999;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
         }
 
-        /* Animación de entrada */
-        .login-card {
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { flex-direction: column; overflow: auto; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--accent-blue); }
+            h1.big-title { font-size: 5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="login-card">
-        <div class="logo-space">ALETIA OS</div>
-        <div class="subtitle">El Arquitecto de la Realidad</div>
+    <nav class="sidebar">
+        <div class="menu-label">Navegación del Sistema</div>
+        
+        <a href="AQUÍ_LINK_HOTMART" class="btn nav-btn">01. EL CURSO ONLINE</a>
+        <a href="AQUÍ_LINK_AMAZON" class="btn nav-btn">02. MANUAL HARDWARE</a>
+        <a href="#registro" class="btn nav-btn" style="color: var(--accent-blue);">03. PROTOCOLOS PRIVADOS</a>
 
-        <div class="input-group">
-            <label>IDENTIFICADOR DE USUARIO</label>
-            <input type="text" placeholder="Ingresa tu ID de Arquitecto..." disabled>
+        <div class="jotform-side">
+            <p>REGISTRO DE ARQUITECTO:</p>
+            <div id="jotform-placeholder" style="color: #555;">[Formulario de Registro]</div>
         </div>
+    </nav>
 
-        <div class="input-group">
-            <label>CÓDIGO DE ACCESO</label>
-            <input type="password" value="********" disabled>
+    <main class="main-stage">
+        <div class="brand-center">
+            <img src="logo-aletia.png" alt="Símbolo" class="logo-center">
+            <h1 class="big-title">ALETIA<br>OS</h1>
         </div>
-
-        <a href="TU_LINK_DE_HOTMART_AQUI" class="btn btn-primary">INICIAR REPROGRAMACIÓN (CURSO)</a>
-
-        <a href="TU_LINK_DE_AMAZON_AQUI" class="btn btn-secondary">MANUAL DE HARDWARE (LIBRO)</a>
-
-        <div class="footer-text">
-            © 2026 ALETIA OS SYSTEM. Todos los derechos reservados.<br>
-            Corriendo el velo de la realidad.
-        </div>
-    </div>
+    </main>
 
 </body>
 </html>
