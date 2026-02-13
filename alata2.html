@@ -6,9 +6,9 @@
     <title>Protocolos Privados | Aletia OS</title>
     <style>
         body {
-            background-color: #050505; /* Fondo negro */
+            background-color: #050505;
             color: #ffffff;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 40px 20px;
             display: flex;
@@ -17,57 +17,59 @@
         }
 
         h1 {
-            color: #1CB5E0; /* Azul celeste */
+            color: #1CB5E0; /* El cian característico de Aletia OS */
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             margin-bottom: 10px;
             text-align: center;
+            font-size: 1.8rem;
         }
 
-        .welcome-msg {
+        .welcome-text {
             color: #a1a1aa;
-            margin-bottom: 50px;
-            text-align: center;
+            margin-bottom: 60px;
             font-weight: 300;
+            font-size: 1rem;
         }
 
-        .video-container {
+        /* Contenedor principal que separa los videos */
+        .video-feed {
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             display: flex;
             flex-direction: column;
-            gap: 60px; /* Espacio entre cada video */
+            gap: 80px; /* AQUÍ está el secreto: gran espacio entre protocolos */
         }
 
-        .video-card {
+        /* Tarjeta para cada video */
+        .protocol-card {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(28, 181, 224, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-left: 4px solid #1CB5E0; /* Línea de diseño lateral */
+            padding: 25px;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        .video-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
+        .protocol-header {
+            font-size: 1.1rem;
             color: #1CB5E0;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            letter-spacing: 1px;
+            font-weight: bold;
         }
 
-        /* El secreto para que el video no se vea cortado ni desordenado */
-        .video-wrapper {
+        /* Contenedor para que el video mantenga proporción 16:9 */
+        .video-responsive {
             position: relative;
             padding-bottom: 56.25%; /* Ratio 16:9 */
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
+            background: #000;
         }
 
-        .video-wrapper iframe {
+        .video-responsive iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -75,53 +77,44 @@
             height: 100%;
             border: 0;
         }
-
-        .footer-note {
-            margin-top: 100px;
-            font-size: 0.8rem;
-            color: #444;
-        }
     </style>
 </head>
 <body>
 
-    <h1>PROTOCOLOS DE ACCESO CONCEDIDO</h1>
-    <p class="welcome-msg">Bienvenido al sistema, Arquitecto. Estos datos son confidenciales.</p>
+    <h1>PROTOCOLOS DE REPROGRAMACIÓN</h1>
+    <p class="welcome-text">Bienvenido al sistema. Estos datos son confidenciales.</p>
 
-    <div class="video-container">
+    <div class="video-feed">
 
-        <div class="video-card">
-            <div class="video-title"><span>01.</span> Decodificando el fallo</div>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/gs_wOWkTkYE" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen></iframe>
+        <div class="protocol-card">
+            <div class="protocol-header">01. Protocolo de Entusiasmo y Frecuencia</div>
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/gs_wOWkTkYE" allowfullscreen></iframe>
             </div>
         </div>
 
-        <div class="video-card">
-            <div class="video-title"><span>02.</span> La inyección de código</div>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/dJT-0j3Q5y8" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen></iframe>
+        <div class="protocol-card">
+            <div class="protocol-header">02. Decodificación del Script Obsoleto</div>
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/dJT-0j3Q5y8" allowfullscreen></iframe>
             </div>
         </div>
 
-        <div class="video-card">
-            <div class="video-title"><span>03.</span> Reinicio del Hardware</div>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/M4sCa-3mVkk" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen></iframe>
+        <div class="protocol-card">
+            <div class="protocol-header">03. Reinicio del Hardware Biológico</div>
+            <div class="video-responsive">
+                <iframe src="https://www.youtube.com/embed/M4sCa-3mVkk" allowfullscreen></iframe>
             </div>
         </div>
 
     </div>
 
-    <p class="footer-note">ALETIA OS - MANUAL DE HARDWARE HUMANO © 2024</p>
+    <footer style="margin-top: 100px; color: #333; font-size: 0.8rem;">
+        ALETIA OS - SISTEMA OPERATIVO DE CONCIENCIA
+    </footer>
 
 </body>
 </html>
+
 
 
