@@ -1,149 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aletia OS | Sistema de Reprogramación</title>
-    <meta name="google-site-verification" content="IF5z11NeBRxj1DKmsv2FAlSrmzlJ2c_AIEWxmG6M6nk" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #050505;
-            --accent-blue: #1CB5E0;
-            --accent-purple: #7c3aed;
-            --sidebar-w: 280px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: var(--bg);
-            color: #fff;
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
+<title>Aletia OS | Arquitectura de Autorregulación y Optimización Interna</title>
 
-        /* MENÚ LATERAL */
-        .sidebar {
-            width: var(--sidebar-w);
-            background: rgba(255, 255, 255, 0.02);
-            border-right: 1px solid rgba(28, 181, 224, 0.2);
-            display: flex;
-            flex-direction: column;
-            padding: 40px 20px;
-            justify-content: center;
-            z-index: 10;
-        }
+<meta name="description" content="Aletia OS es un sistema operativo humano orientado a la autorregulación, claridad mental y optimización de recursos internos. Explora libros, protocolos y formación.">
 
-        .menu-label {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            color: var(--accent-blue);
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
+<meta name="keywords" content="Aletia OS, método Aletia, autorregulación mental, optimización interna, arquitectura mental, claridad mental, gestión emocional, desarrollo humano">
 
-        .nav-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: left;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border-radius: 8px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
+<meta name="author" content="ALETIA OS">
 
-        .nav-btn:hover {
-            background: rgba(28, 181, 224, 0.1);
-            border-color: var(--accent-blue);
-            transform: translateX(10px);
-        }
+<meta name="robots" content="index, follow">
 
-        /* ÁREA CENTRAL HERO */
-        .main-stage {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+<link rel="canonical" href="https://aletiaos.com">
 
-        .brand-center {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+<!-- Open Graph para redes -->
+<meta property="og:title" content="Aletia OS | Sistema de Autorregulación">
+<meta property="og:description" content="Arquitectura de atención consciente para optimizar recursos internos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aletiaos.com">
 
-        .logo-center {
-            width: 150px; /* Tamaño del cuadrado de pinceladas */
-            height: 150px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(28, 181, 224, 0.4));
-        }
+<meta name="google-site-verification" content="IF5z11NeBRxj1DKmsv2FAlSrmzlJ2c_AIEWxmG6M6nk" />
 
-        h1.big-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(4rem, 15vw, 10rem);
-            font-weight: 700;
-            margin: 0;
-            line-height: 0.85;
-            background: linear-gradient(180deg, #fff 30%, var(--accent-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -5px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-        /* Estilo para el formulario dentro del menú o flotante */
-        .jotform-side {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-        }
+<style>
+:root {
+--bg: #050505;
+--accent-blue: #1CB5E0;
+--accent-purple: #7c3aed;
+--sidebar-w: 280px;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            body { flex-direction: column; overflow: auto; }
-            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--accent-blue); }
-            h1.big-title { font-size: 5rem; }
-        }
-    </style>
+body {
+background-color: var(--bg);
+color: #fff;
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+display: flex;
+height: 100vh;
+overflow: hidden;
+}
+
+/* MENÚ LATERAL */
+
+.sidebar {
+width: var(--sidebar-w);
+background: rgba(255, 255, 255, 0.02);
+border-right: 1px solid rgba(28, 181, 224, 0.2);
+display: flex;
+flex-direction: column;
+padding: 40px 20px;
+justify-content: center;
+z-index: 10;
+}
+
+.menu-label {
+font-family: 'Orbitron', sans-serif;
+font-size: 0.7rem;
+color: var(--accent-blue);
+letter-spacing: 3px;
+margin-bottom: 30px;
+text-transform: uppercase;
+}
+
+.nav-btn {
+background: transparent;
+border: 1px solid rgba(255, 255, 255, 0.1);
+color: #fff;
+padding: 15px;
+margin-bottom: 15px;
+text-align: left;
+text-decoration: none;
+font-weight: bold;
+font-size: 0.9rem;
+border-radius: 8px;
+transition: all 0.3s;
+display: flex;
+align-items: center;
+}
+
+.nav-btn:hover {
+background: rgba(28, 181, 224, 0.1);
+border-color: var(--accent-blue);
+transform: translateX(10px);
+}
+
+/* HERO */
+
+.main-stage {
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+
+.brand-center {
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.logo-center {
+width: 150px;
+height: 150px;
+margin-bottom: 20px;
+filter: drop-shadow(0 0 20px rgba(28, 181, 224, 0.4));
+}
+
+/* REDUCIMOS UN POCO EL TAMAÑO */
+
+h1.big-title {
+font-family: 'Montserrat', sans-serif;
+font-size: clamp(3rem, 12vw, 7rem);
+font-weight: 700;
+margin: 0;
+line-height: 0.85;
+background: linear-gradient(180deg, #fff 30%, var(--accent-blue) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+letter-spacing: -3px;
+}
+
+.jotform-side {
+margin-top: 30px;
+font-size: 0.8rem;
+border-top: 1px solid rgba(255,255,255,0.1);
+padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+body { flex-direction: column; overflow: auto; }
+.sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--accent-blue); }
+h1.big-title { font-size: 4rem; }
+}
+
+</style>
 </head>
+
 <body>
 
-    <nav class="sidebar">
-        <div class="menu-label">Navegación del Sistema</div>
-        
-        <a href="https://andreseliecerramirez.kpages.online/el-codigo-del-arquitecto-manual-de-ingenieria-humana-para-recuperar-tu-soberania-e00bf9f1-a5c1-42f2-a692-6b2e763025ec" class="btn nav-btn">01. EL CURSO ONLINE</a>
-        <a href="https://www.amazon.es/Aletia-OS-El-Arquitecto-Realidad1/dp/B0GLKXJ26B" class="btn nav-btn">02. MANUAL HARDWARE</a>
-        <a href="https://form.jotform.com/260436046819056" class="btn nav-btn" style="color: var(--accent-blue);">03. PROTOCOLOS PRIVADOS</a>
+<nav class="sidebar">
 
-        <div class="jotform-side">
-            <p>REGISTRO DE ARQUITECTO:</p>
-            <div id="jotform-placeholder" style="color: #555;">[Formulario de Registro]</div>
-        </div>
-    </nav>
+<div class="menu-label">Navegación del Sistema</div>
 
-    <main class="main-stage">
-        <div class="brand-center">
-            <img src="logo_aletia_os.png" alt="Símbolo" class="logo-center">
-            <h1 class="big-title">ALETIA<br>OS</h1>
-        </div>
-    </main>
+<a href="https://andreseliecerramirez.kpages.online/el-codigo-del-arquitecto-manual-de-ingenieria-humana-para-recuperar-tu-soberania-e00bf9f1-a5c1-42f2-a692-6b2e763025ec" class="nav-btn">01. EL CURSO ONLINE</a>
+
+<a href="https://www.amazon.es/Aletia-OS-El-Arquitecto-Realidad1/dp/B0GLKXJ26B" class="nav-btn">02. MANUAL HARDWARE</a>
+
+<!-- NUEVO LIBRO AMAZON -->
+
+<a href="https://www.amazon.com/-/es/Andres-Eliecer-Ramirez-ebook/dp/B0GQQZH2FM" class="nav-btn">03. THE ALETIA METHOD (EBOOK)</a>
+
+<a href="https://form.jotform.com/260436046819056" class="nav-btn" style="color: var(--accent-blue);">04. PROTOCOLOS PRIVADOS</a>
+
+<div class="jotform-side">
+<p>REGISTRO DE ARQUITECTO:</p>
+<div id="jotform-placeholder" style="color: #555;">[Formulario de Registro]</div>
+</div>
+
+</nav>
+
+<main class="main-stage">
+
+<div class="brand-center">
+<img src="logo_aletia_os.png" alt="Símbolo Aletia OS" class="logo-center">
+
+<h1 class="big-title">
+ALETIA<br>OS
+</h1>
+
+</div>
+
+</main>
 
 </body>
 </html>
-
 
 
