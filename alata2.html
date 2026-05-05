@@ -1,120 +1,886 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolos Privados | Aletia OS</title>
-    <style>
-        body {
-            background-color: #050505;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Videos / Media — Aletia OS</title>
+  <meta name="description" content="Protocolos de reprogramación y contenido audiovisual — Aletia OS, sistema operativo humano." />
 
-        h1 {
-            color: #1CB5E0; /* El cian característico de Aletia OS */
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            text-align: center;
-            font-size: 1.8rem;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-        .welcome-text {
-            color: #a1a1aa;
-            margin-bottom: 60px;
-            font-weight: 300;
-            font-size: 1rem;
-        }
+  <style>
+    :root {
+      --bg:         #020608;
+      --bg1:        #050d10;
+      --green:      #00ffaa;
+      --green2:     #00cc88;
+      --green-dim:  rgba(0,255,170,0.15);
+      --green-glow: rgba(0,255,170,0.07);
+      --amber:      #f0c060;
+      --amber-dim:  rgba(240,192,96,0.12);
+      --blue:       #38c8ff;
+      --blue-dim:   rgba(56,200,255,0.10);
+      --red:        #ff5566;
+      --text:       #e8f4f0;
+      --muted:      rgba(200,230,220,0.62);
+      --dim:        rgba(200,230,220,0.36);
+      --line:       rgba(0,255,170,0.10);
+      --line2:      rgba(0,255,170,0.06);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
+    }
 
-        /* Contenedor principal que separa los videos */
-        .video-feed {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            gap: 80px; /* AQUÍ está el secreto: gran espacio entre protocolos */
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        /* Tarjeta para cada video */
-        .protocol-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 4px solid #1CB5E0; /* Línea de diseño lateral */
-            padding: 25px;
-            border-radius: 0 15px 15px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
 
-        .protocol-header {
-            font-size: 1.1rem;
-            color: #1CB5E0;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
+    /* scanlines */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent, transparent 2px,
+        rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px
+      );
+    }
 
-        /* Contenedor para que el video mantenga proporción 16:9 */
-        .video-responsive {
-            position: relative;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #000;
-        }
+    /* grid bg */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,255,170,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,170,0.022) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 90% 50% at 50% 0%, black 20%, transparent 80%);
+    }
 
-        .video-responsive iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 52px;
+      background: rgba(2,6,8,0.92);
+      border-bottom: 1px solid var(--line2);
+      backdrop-filter: blur(20px);
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--dim);
+      letter-spacing: 1px;
+      padding: 6px 10px;
+      border: 1px solid var(--line2);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      color: var(--green);
+      border-color: rgba(0,255,170,0.25);
+      background: var(--green-glow);
+    }
+
+    .topbar-path {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--dim);
+    }
+
+    .topbar-path span { color: var(--green); }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--green);
+      padding: 4px 10px;
+      border: 1px solid rgba(0,255,170,0.2);
+      border-radius: 3px;
+      background: var(--green-glow);
+    }
+
+    .status-pill::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 2s infinite;
+      box-shadow: 0 0 5px var(--green);
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ─── HERO HEADER ─── */
+    .page-header {
+      position: relative;
+      z-index: 1;
+      padding: 42px 32px 32px;
+      border-bottom: 1px solid var(--line2);
+      background: rgba(0,255,170,0.012);
+    }
+
+    .page-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .page-title .accent { color: var(--green); }
+
+    .page-subtitle {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--dim);
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .page-desc {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* stats row */
+    .stats-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-val {
+      font-family: var(--display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-bottom: 1px solid var(--line2);
+      background: rgba(2,6,8,0.6);
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 2px;
+      margin-right: 4px;
+    }
+
+    .filter-btn {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      padding: 5px 12px;
+      border-radius: 3px;
+      border: 1px solid var(--line);
+      color: var(--dim);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      color: var(--green);
+      border-color: rgba(0,255,170,0.3);
+      background: var(--green-glow);
+    }
+
+    /* ─── CONTENT AREA ─── */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+    }
+
+    /* ─── SECTION DIVIDER ─── */
+    .feed-section {
+      margin-bottom: 52px;
+    }
+
+    .feed-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .feed-section-num {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      opacity: 0.6;
+    }
+
+    .feed-section-title {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .feed-section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--line2);
+    }
+
+    /* ─── VIDEO CARD — LANDSCAPE ─── */
+    .video-card {
+      background: rgba(0,0,0,0.28);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .video-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .video-card.col-green::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+    .video-card.col-amber::before { background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+    .video-card.col-blue::before  { background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+
+    .video-card:hover {
+      border-color: rgba(0,255,170,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.5);
+    }
+
+    .video-card:hover::before { opacity: 1; }
+
+    /* main card layout: info + embed side by side */
+    .card-inner {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+
+    .card-meta {
+      padding: 24px 22px;
+      border-right: 1px solid var(--line2);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(0,255,170,0.012);
+    }
+
+    .card-index {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .col-green .card-index { color: var(--green); }
+    .col-amber .card-index { color: var(--amber); }
+    .col-blue  .card-index { color: var(--blue); }
+
+    .card-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 1.5px;
+      padding: 3px 8px;
+      border-radius: 2px;
+      width: fit-content;
+    }
+
+    .badge-video {
+      color: var(--blue);
+      background: var(--blue-dim);
+      border: 1px solid rgba(56,200,255,0.2);
+    }
+
+    .badge-short {
+      color: var(--amber);
+      background: var(--amber-dim);
+      border: 1px solid rgba(240,192,96,0.2);
+    }
+
+    .card-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: auto;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 1px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      border: 1px solid var(--line);
+      color: var(--dim);
+    }
+
+    /* video embed area */
+    .card-embed {
+      background: #000;
+    }
+
+    .embed-landscape {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .embed-landscape iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* ─── SHORT CARDS ─── */
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .short-card {
+      background: rgba(0,0,0,0.28);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .short-card:hover {
+      border-color: rgba(240,192,96,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.5);
+    }
+
+    .short-meta {
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--line2);
+      background: rgba(240,192,96,0.025);
+    }
+
+    .short-index {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--amber);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .short-title {
+      font-family: var(--display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .short-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* portrait ratio for shorts */
+    .embed-short {
+      position: relative;
+      padding-bottom: 177.78%; /* 9:16 */
+      height: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .embed-short iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 18px 32px;
+      border-top: 1px solid var(--line2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 1px;
+    }
+
+    .footer-left span { color: var(--green); }
+
+    .footer-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-link {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border: 1px solid var(--line2);
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--green);
+      border-color: rgba(0,255,170,0.25);
+      background: var(--green-glow);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .card-inner {
+        grid-template-columns: 1fr;
+      }
+      .card-meta {
+        border-right: none;
+        border-bottom: 1px solid var(--line2);
+      }
+      .shorts-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content { padding: 24px 16px 60px; }
+      .page-header { padding: 28px 18px 24px; }
+      .filter-bar { padding: 10px 16px; }
+      .topbar { padding: 0 16px; }
+      footer { padding: 14px 16px; }
+      .shorts-grid { grid-template-columns: 1fr; }
+      .stats-row { gap: 16px; }
+      .topbar-path { display: none; }
+    }
+
+    /* ─── APPEAR ANIMATION ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .video-card, .short-card {
+      animation: fadeUp 0.5s ease backwards;
+    }
+  </style>
 </head>
+
 <body>
 
-    <h1>PROTOCOLOS DE REPROGRAMACIÓN</h1>
-    <p class="welcome-text">Bienvenido al sistema. Estos datos son confidenciales.</p>
-
-    <div class="video-feed">
-
-        <div class="protocol-card">
-            <div class="protocol-header">01. Protocolo de Entusiasmo y Frecuencia</div>
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/gs_wOWkTkYE" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div class="protocol-card">
-            <div class="protocol-header">02. Decodificación del Script Obsoleto</div>
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/dJT-0j3Q5y8" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div class="protocol-card">
-            <div class="protocol-header">03. Reinicio del Hardware Biológico</div>
-            <div class="video-responsive">
-                <iframe src="https://www.youtube.com/embed/M4sCa-3mVkk" allowfullscreen></iframe>
-            </div>
-        </div>
-
+  <!-- ─── TOPBAR ─── -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="back-btn">← VOLVER</a>
+      <div class="topbar-path">
+        <span>aletiaos.com</span> / videos / media
+      </div>
     </div>
+    <div class="topbar-right">
+      <div class="status-pill">SISTEMA ACTIVO</div>
+    </div>
+  </div>
 
-    <footer style="margin-top: 100px; color: #333; font-size: 0.8rem;">
-        ALETIA OS - SISTEMA OPERATIVO DE CONCIENCIA
-    </footer>
+  <!-- ─── PAGE HEADER ─── -->
+  <div class="page-header">
+    <div class="page-eyebrow">ALETIA OS // MÓDULO AUDIOVISUAL</div>
+    <h1 class="page-title">PROTOCOLOS <span class="accent">DE REPROGRAMACIÓN</span></h1>
+    <div class="page-subtitle">// DATOS CONFIDENCIALES — ACCESO AUTORIZADO</div>
+    <p class="page-desc">
+      Contenido audiovisual para acercarte al lenguaje, las ideas y la experiencia Aletia OS.
+      Cada protocolo es una entrada distinta al mismo sistema.
+    </p>
+    <div class="stats-row">
+      <div class="stat-block">
+        <div class="stat-val">06</div>
+        <div class="stat-lbl">Protocolos activos</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">03</div>
+        <div class="stat-lbl">Videos completos</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-val">03</div>
+        <div class="stat-lbl">Shorts / Señales</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FILTER BAR ─── -->
+  <div class="filter-bar">
+    <span class="filter-label">FILTRAR //</span>
+    <button class="filter-btn active" onclick="filterFeed('all', this)">TODO</button>
+    <button class="filter-btn" onclick="filterFeed('video', this)">VIDEOS</button>
+    <button class="filter-btn" onclick="filterFeed('short', this)">SHORTS</button>
+  </div>
+
+  <!-- ─── CONTENT ─── -->
+  <div class="content">
+
+    <!-- SECTION: Videos completos -->
+    <div class="feed-section" id="section-videos">
+      <div class="feed-section-header">
+        <span class="feed-section-num">01 //</span>
+        <span class="feed-section-title">Videos completos</span>
+        <div class="feed-section-line"></div>
+      </div>
+
+      <!-- VIDEO 01 -->
+      <div class="video-card col-green" style="margin-bottom:16px; animation-delay:0.05s;">
+        <div class="card-inner">
+          <div class="card-meta">
+            <div class="card-index">PROTOCOLO 01</div>
+            <span class="card-type-badge badge-video">▷ VIDEO</span>
+            <div class="card-title">Protocolo de Entusiasmo y Frecuencia</div>
+            <div class="card-desc">
+              La energía interna no es aleatoria — tiene estructura. Este protocolo explora
+              cómo el entusiasmo opera como señal del sistema y cómo recuperar frecuencia
+              cuando el sistema está en baja.
+            </div>
+            <div class="card-tag-row">
+              <span class="tag">ENERGÍA</span>
+              <span class="tag">FRECUENCIA</span>
+              <span class="tag">ESTADO INTERNO</span>
+            </div>
+          </div>
+          <div class="card-embed">
+            <div class="embed-landscape">
+              <iframe src="https://www.youtube.com/embed/gs_wOWkTkYE"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 02 -->
+      <div class="video-card col-amber" style="margin-bottom:16px; animation-delay:0.10s;">
+        <div class="card-inner">
+          <div class="card-meta">
+            <div class="card-index">PROTOCOLO 02</div>
+            <span class="card-type-badge badge-video">▷ VIDEO</span>
+            <div class="card-title">Decodificación del Script Obsoleto</div>
+            <div class="card-desc">
+              Todos corremos sobre scripts instalados antes de poder cuestionarlos.
+              Este protocolo enseña a identificarlos, leerlos y decidir cuáles actualizar
+              desde la base del sistema.
+            </div>
+            <div class="card-tag-row">
+              <span class="tag">IDENTIDAD</span>
+              <span class="tag">PATRONES</span>
+              <span class="tag">REESCRITURA</span>
+            </div>
+          </div>
+          <div class="card-embed">
+            <div class="embed-landscape">
+              <iframe src="https://www.youtube.com/embed/dJT-0j3Q5y8"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 03 -->
+      <div class="video-card col-blue" style="margin-bottom:16px; animation-delay:0.15s;">
+        <div class="card-inner">
+          <div class="card-meta">
+            <div class="card-index">PROTOCOLO 03</div>
+            <span class="card-type-badge badge-video">▷ VIDEO</span>
+            <div class="card-title">Reinicio del Hardware Biológico</div>
+            <div class="card-desc">
+              El cuerpo no es solo el contenedor — es parte activa del sistema.
+              Este protocolo aborda cómo el estado físico codifica el estado interno
+              y cómo intervenir desde el hardware.
+            </div>
+            <div class="card-tag-row">
+              <span class="tag">CUERPO</span>
+              <span class="tag">HARDWARE</span>
+              <span class="tag">REGULACIÓN</span>
+            </div>
+          </div>
+          <div class="card-embed">
+            <div class="embed-landscape">
+              <iframe src="https://www.youtube.com/embed/M4sCa-3mVkk"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 04 — La fe según Aletia OS -->
+      <div class="video-card col-green" style="animation-delay:0.20s;">
+        <div class="card-inner">
+          <div class="card-meta">
+            <div class="card-index">PROTOCOLO 04</div>
+            <span class="card-type-badge badge-video">▷ VIDEO</span>
+            <div class="card-title">La Fe según Aletia OS</div>
+            <div class="card-desc">
+              La fe redefinida como variable operativa del sistema. No como creencia ciega
+              sino como orientación activa hacia el resultado — un estado interno que
+              modifica la forma en que el sistema procesa la incertidumbre.
+            </div>
+            <div class="card-tag-row">
+              <span class="tag">FE</span>
+              <span class="tag">ORIENTACIÓN</span>
+              <span class="tag">INCERTIDUMBRE</span>
+            </div>
+          </div>
+          <div class="card-embed">
+            <div class="embed-landscape">
+              <iframe src="https://www.youtube.com/embed/53mEC-Kgwmk"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /section-videos -->
+
+    <!-- SECTION: Shorts -->
+    <div class="feed-section" id="section-shorts">
+      <div class="feed-section-header">
+        <span class="feed-section-num">02 //</span>
+        <span class="feed-section-title">Señales cortas</span>
+        <div class="feed-section-line"></div>
+      </div>
+
+      <div class="shorts-grid">
+
+        <!-- SHORT 01 -->
+        <div class="short-card" style="animation-delay:0.25s;">
+          <div class="short-meta">
+            <div class="short-index">SEÑAL 01 · SHORT</div>
+            <div class="short-title">Activación de frecuencia</div>
+            <div class="short-desc">Fragmento de entrada al sistema. Una señal para reconectar con el estado operativo.</div>
+          </div>
+          <div class="embed-short">
+            <iframe src="https://www.youtube.com/embed/K73cC-ZqB9U"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- SHORT 02 -->
+        <div class="short-card" style="animation-delay:0.30s;">
+          <div class="short-meta">
+            <div class="short-index">SEÑAL 02 · SHORT</div>
+            <div class="short-title">Micro-protocolo de claridad</div>
+            <div class="short-desc">Acceso rápido. Una entrada comprimida al lenguaje Aletia para momentos de ruido interno.</div>
+          </div>
+          <div class="embed-short">
+            <iframe src="https://www.youtube.com/embed/BFu5GWu9mbc"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER for future shorts -->
+        <div class="short-card" style="animation-delay:0.35s; opacity:0.45; pointer-events:none;">
+          <div class="short-meta">
+            <div class="short-index">SEÑAL 03 · PRÓXIMAMENTE</div>
+            <div class="short-title" style="color:var(--dim);">Protocolo en preparación</div>
+            <div class="short-desc">Próxima señal en proceso de carga al sistema.</div>
+          </div>
+          <div class="embed-short" style="background: rgba(0,255,170,0.03); display:flex; align-items:center; justify-content:center; padding-bottom:177.78%;">
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;">
+              <div style="font-family:var(--mono); font-size:0.65rem; color:var(--dim); letter-spacing:2px;">CARGANDO...</div>
+              <div style="width:40px; height:2px; background: linear-gradient(90deg, transparent, var(--green), transparent); animation: shimmer 2s infinite;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /section-shorts -->
+
+  </div><!-- /content -->
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-left">
+      <span>ALETIA OS</span> — Sistema Operativo Humano &nbsp;·&nbsp; Datos confidenciales
+    </div>
+    <div class="footer-right">
+      <a href="index.html" class="footer-link">← Volver al inicio</a>
+      <a href="https://wa.me/56944360655" class="footer-link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="mailto:andreseliecerramirez@gmail.com" class="footer-link">Email</a>
+    </div>
+  </footer>
+
+  <script>
+    // Filter functionality
+    function filterFeed(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const secVideos = document.getElementById('section-videos');
+      const secShorts = document.getElementById('section-shorts');
+
+      if (type === 'all') {
+        secVideos.style.display = '';
+        secShorts.style.display = '';
+      } else if (type === 'video') {
+        secVideos.style.display = '';
+        secShorts.style.display = 'none';
+      } else if (type === 'short') {
+        secVideos.style.display = 'none';
+        secShorts.style.display = '';
+      }
+    }
+
+    // Staggered card animations on load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.video-card, .short-card').forEach((el, i) => {
+        el.style.animationDelay = `${0.05 + i * 0.07}s`;
+      });
+    });
+
+    // Shimmer animation for placeholder
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shimmer {
+        0% { opacity: 0.2; transform: scaleX(0.5); }
+        50% { opacity: 1; transform: scaleX(1); }
+        100% { opacity: 0.2; transform: scaleX(0.5); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 
 </body>
 </html>
-
 
 
