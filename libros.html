@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplicaciones Prácticas — Aletia OS | Biblioteca</title>
+  <meta name="description" content="Descubre cómo opera el Método Aletia en situaciones reales. Un ejemplo práctico por cada libro." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:         #020608;
+      --bg1:        #050d10;
+      --green:      #00ffaa;
+      --green-dim:  rgba(0,255,170,0.14);
+      --green-glow: rgba(0,255,170,0.07);
+      --green-hard: rgba(0,255,170,0.22);
+      --amber:      #f0c060;
+      --amber-dim:  rgba(240,192,96,0.10);
+      --blue:       #38c8ff;
+      --blue-dim:   rgba(56,200,255,0.10);
+      --red:        #ff5566;
+      --red-dim:    rgba(255,85,102,0.10);
+      --red-hard:   rgba(255,85,102,0.18);
+      --text:       #e8f4f0;
+      --muted:      rgba(200,230,220,0.62);
+      --dim:        rgba(200,230,220,0.35);
+      --line:       rgba(0,255,170,0.09);
+      --line2:      rgba(0,255,170,0.05);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.035) 2px, rgba(0,0,0,0.035) 4px);
+    }
+
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,255,170,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,170,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 90% 50% at 50% 0%, black 20%, transparent 80%);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 50px;
+      background: rgba(2,6,8,0.94);
+      border-bottom: 1px solid var(--line2);
+      backdrop-filter: blur(20px);
+    }
+
+    .topbar-left { display: flex; align-items: center; gap: 18px; }
+
+    .back-btn {
+      display: flex; align-items: center; gap: 7px;
+      font-family: var(--mono); font-size: 0.62rem;
+      color: var(--dim); letter-spacing: 1px;
+      padding: 5px 10px; border: 1px solid var(--line2); border-radius: 3px;
+      transition: all 0.18s;
+    }
+    .back-btn:hover { color: var(--green); border-color: var(--green-hard); background: var(--green-glow); }
+
+    .topbar-path { font-family: var(--mono); font-size: 0.62rem; color: var(--dim); }
+    .topbar-path span { color: var(--green); }
+
+    .status-pill {
+      display: flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 0.58rem; color: var(--green);
+      padding: 3px 9px; border: 1px solid rgba(0,255,170,0.2); border-radius: 3px;
+      background: var(--green-glow);
+    }
+    .status-pill::before {
+      content: '';
+      width: 5px; height: 5px; background: var(--green); border-radius: 50%;
+      animation: blink 2s infinite; box-shadow: 0 0 5px var(--green);
+    }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      position: relative; z-index: 1;
+      padding: 44px 32px 36px;
+      border-bottom: 1px solid var(--line2);
+      background: rgba(0,255,170,0.012);
+    }
+
+    .page-eyebrow {
+      font-family: var(--mono); font-size: 0.6rem;
+      color: var(--dim); letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1.page-title {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      letter-spacing: -2px; color: var(--text);
+      margin-bottom: 5px; line-height: 1;
+    }
+    h1.page-title .acc { color: var(--green); }
+
+    .page-subtitle {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--dim); letter-spacing: 2px; margin-bottom: 18px;
+    }
+
+    .page-desc {
+      max-width: 620px; color: var(--muted);
+      font-size: 0.97rem; line-height: 1.7;
+    }
+
+    /* counter row */
+    .header-meta {
+      display: flex; gap: 28px; margin-top: 22px; flex-wrap: wrap;
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-val {
+      font-family: var(--display); font-size: 1.5rem;
+      font-weight: 800; color: var(--green); line-height: 1;
+    }
+    .meta-lbl {
+      font-family: var(--mono); font-size: 0.56rem;
+      color: var(--dim); letter-spacing: 2px; text-transform: uppercase;
+    }
+
+    /* ── QUICK NAV ── */
+    .quick-nav {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 32px; border-bottom: 1px solid var(--line2);
+      background: rgba(2,6,8,0.7); backdrop-filter: blur(10px);
+      overflow-x: auto; flex-wrap: nowrap;
+    }
+    .quick-nav::-webkit-scrollbar { height: 2px; }
+    .quick-nav::-webkit-scrollbar-thumb { background: var(--green-dim); }
+
+    .qnav-label {
+      font-family: var(--mono); font-size: 0.58rem;
+      color: var(--dim); letter-spacing: 2px;
+      white-space: nowrap; margin-right: 4px;
+    }
+
+    .qnav-btn {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.5px;
+      padding: 4px 11px; border: 1px solid var(--line); border-radius: 3px;
+      color: var(--dim); white-space: nowrap; transition: all 0.18s;
+    }
+    .qnav-btn:hover {
+      color: var(--green); border-color: var(--green-hard); background: var(--green-glow);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content {
+      position: relative; z-index: 1;
+      max-width: 1060px; margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* ── BOOK ENTRY ── */
+    .book-entry {
+      margin-bottom: 60px;
+      animation: fadeUp 0.5s ease backwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* book header */
+    .book-header {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 22px;
+      margin-bottom: 18px;
+      align-items: start;
+    }
+
+    .book-cover-wrap {
+      position: relative;
+    }
+
+    .book-cover {
+      width: 110px;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      display: block;
+      background: rgba(0,255,170,0.04);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,255,170,0.08);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .book-cover:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,255,170,0.18);
+    }
+
+    .book-cover-fallback {
+      width: 110px;
+      aspect-ratio: 2/3;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      background: linear-gradient(160deg, rgba(0,255,170,0.06), rgba(0,0,0,0.4));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--dim);
+      letter-spacing: 1px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .book-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .book-index {
+      font-family: var(--mono); font-size: 0.58rem;
+      color: var(--dim); letter-spacing: 2.5px; text-transform: uppercase;
+    }
+
+    .book-lang-badge {
+      display: inline-flex; align-items: center;
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 1px;
+      padding: 2px 8px; border-radius: 2px; width: fit-content;
+    }
+
+    .badge-es { color: var(--green); background: var(--green-dim); border: 1px solid var(--green-hard); }
+    .badge-en { color: var(--blue);  background: var(--blue-dim);  border: 1px solid rgba(56,200,255,0.2); }
+    .badge-esp { color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(240,192,96,0.2); }
+
+    h2.book-title {
+      font-family: var(--display); font-weight: 800;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      letter-spacing: -0.03em; color: var(--text);
+      line-height: 1.2;
+    }
+
+    .book-hook {
+      font-size: 0.9rem; color: var(--muted); line-height: 1.6;
+      max-width: 560px;
+    }
+
+    .book-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 9px 16px; border-radius: 4px;
+      border: 1px solid rgba(0,255,170,0.3);
+      color: var(--green); background: var(--green-glow);
+      transition: all 0.2s; width: fit-content; margin-top: 4px;
+    }
+    .book-cta:hover {
+      background: var(--green-dim);
+      border-color: rgba(0,255,170,0.55);
+      transform: translateX(4px);
+    }
+
+    /* ── SCENARIO BLOCK ── */
+    .scenario-block {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .scene-trigger {
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--line2);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .scene-label {
+      font-family: var(--mono); font-size: 0.58rem;
+      color: var(--dim); letter-spacing: 2px;
+      text-transform: uppercase; white-space: nowrap;
+      padding-top: 3px;
+    }
+
+    .scene-text {
+      font-size: 0.95rem; color: var(--muted);
+      font-style: italic; line-height: 1.65;
+    }
+
+    .scene-text strong {
+      color: var(--amber); font-style: normal; font-weight: 500;
+    }
+
+    /* response split */
+    .response-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .response-panel {
+      padding: 20px;
+    }
+
+    .panel-auto {
+      background: var(--red-dim);
+      border-right: 1px solid var(--line2);
+    }
+
+    .panel-aletia {
+      background: var(--green-glow);
+    }
+
+    .panel-header {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.6rem;
+      font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 12px; padding-bottom: 10px;
+      border-bottom: 1px solid;
+    }
+
+    .panel-auto .panel-header {
+      color: var(--red);
+      border-color: rgba(255,85,102,0.15);
+    }
+
+    .panel-aletia .panel-header {
+      color: var(--green);
+      border-color: rgba(0,255,170,0.15);
+    }
+
+    .panel-header .ph-icon {
+      font-size: 0.75rem;
+    }
+
+    .panel-body {
+      font-size: 0.9rem; line-height: 1.7; color: var(--muted);
+    }
+
+    .panel-auto .panel-body {
+      color: rgba(255,200,200,0.72);
+    }
+
+    .panel-body em {
+      font-style: italic;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .panel-body strong {
+      font-weight: 500;
+    }
+
+    .panel-auto .panel-body strong { color: rgba(255,160,160,0.9); }
+    .panel-aletia .panel-body strong { color: rgba(180,255,230,0.9); }
+
+    /* divider between book entries */
+    .entry-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin-bottom: 60px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      padding: 18px 32px;
+      border-top: 1px solid var(--line2);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+    }
+
+    .footer-left {
+      font-family: var(--mono); font-size: 0.6rem; color: var(--dim); letter-spacing: 1px;
+    }
+    .footer-left span { color: var(--green); }
+
+    .footer-links { display: flex; gap: 10px; }
+
+    .footer-link {
+      font-family: var(--mono); font-size: 0.6rem; color: var(--dim);
+      padding: 4px 10px; border: 1px solid var(--line2); border-radius: 3px;
+      transition: all 0.18s;
+    }
+    .footer-link:hover { color: var(--green); border-color: var(--green-hard); background: var(--green-glow); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .content { padding: 28px 16px 60px; }
+      .page-header { padding: 28px 18px 24px; }
+      .topbar { padding: 0 16px; }
+      .quick-nav { padding: 8px 16px; }
+      footer { padding: 14px 16px; }
+      .book-header { grid-template-columns: 80px 1fr; gap: 14px; }
+      .book-cover, .book-cover-fallback { width: 80px; }
+      .response-split { grid-template-columns: 1fr; }
+      .panel-auto { border-right: none; border-bottom: 1px solid var(--line2); }
+      .topbar-path { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="back-btn">← VOLVER</a>
+      <div class="topbar-path">
+        <span>aletiaos.com</span> / biblioteca / aplicaciones
+      </div>
+    </div>
+    <div class="status-pill">9 MÓDULOS ACTIVOS</div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">ALETIA OS // BIBLIOTECA APLICADA</div>
+    <h1 class="page-title">EL MÉTODO <span class="acc">EN ACCIÓN</span></h1>
+    <div class="page-subtitle">// LO QUE CAMBIA CUANDO EL SISTEMA OPERA DIFERENTE</div>
+    <p class="page-desc">
+      No son resúmenes. Son escenas reales — el tipo de momento en que el sistema automático
+      toma el control — y lo que ocurre cuando aplicas lo que cada libro instala en ti.
+    </p>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-val">9</div><div class="meta-lbl">Libros disponibles</div></div>
+      <div class="meta-item"><div class="meta-val">9</div><div class="meta-lbl">Escenas prácticas</div></div>
+      <div class="meta-item"><div class="meta-val">2</div><div class="meta-lbl">Idiomas</div></div>
+    </div>
+  </div>
+
+  <!-- QUICK NAV -->
+  <nav class="quick-nav">
+    <span class="qnav-label">IR A //</span>
+    <a class="qnav-btn" href="#b1">Arquitecto</a>
+    <a class="qnav-btn" href="#b2">Conócete</a>
+    <a class="qnav-btn" href="#b3">Actualización</a>
+    <a class="qnav-btn" href="#b4">Recover</a>
+    <a class="qnav-btn" href="#b5">Método Aletia</a>
+    <a class="qnav-btn" href="#b6">Yeshua</a>
+    <a class="qnav-btn" href="#b7">Reinicio</a>
+    <a class="qnav-btn" href="#b8">Administrador</a>
+    <a class="qnav-btn" href="#b9">The Aletia Method</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+
+    <!-- ── LIBRO 01 ── -->
+    <div class="book-entry" id="b1" style="animation-delay:0.05s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GLJF1G6S" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GLJF1G6S.01._SX300_.jpg"
+              alt="El Arquitecto de la Realidad"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 01</div>
+          <span class="book-lang-badge badge-es">ES · EBOOK</span>
+          <h2 class="book-title">El Arquitecto de la Realidad</h2>
+          <p class="book-hook">Tu realidad no es lo que pasa — es la interpretación que tu sistema construye sobre lo que pasa. Este libro te enseña a leer esa arquitectura y a rediseñarla desde adentro.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GLJF1G6S" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Tu jefe te llama en mitad de una reunión y dice: <strong>"Este informe está mal, hay que rehacerlo."</strong> Todos te están mirando.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>El sistema reacciona en décimas de segundo.</em>
+              Se activa la vergüenza. Te hundes o te pones a la defensiva. Buscas excusas sin haberlas pensado. <strong>La mente se cierra</strong> para protegerse y deja de procesar información útil. El resto de la reunión la pasas rumiando.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Reconoces la activación — la nombras como vergüenza, no como realidad.</em>
+              Desde esa distancia, preguntas: <strong>"¿Qué parte necesita corrección?"</strong> La crítica se convierte en información operativa. Saliste del radar de la amenaza y entraste al del problema que puedes resolver.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 02 ── -->
+    <div class="book-entry" id="b2" style="animation-delay:0.08s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GRWTVL96" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GRWTVL96.01._SX300_.jpg"
+              alt="Conócete a ti mismo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 02</div>
+          <span class="book-lang-badge badge-es">ES · EBOOK</span>
+          <h2 class="book-title">Conócete a ti mismo</h2>
+          <p class="book-hook">Lectura interna y presencia bajo presión. La mayoría no sabe lo que le afecta ni por qué — solo siente el disparo. Este libro instala la capacidad de leer tus propias señales antes de que te controlen.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GRWTVL96" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Un amigo hace un comentario en broma sobre algo que hiciste. <strong>"Típico de ti."</strong> No debería molestarte — pero algo se activa de inmediato.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>Reaccionas con distancia o con una respuesta cortante.</em>
+              Después te preguntas por qué te molestó algo tan pequeño. <strong>Sin respuesta.</strong> La noche te la pasas dándole vueltas. La relación queda con una tensión que nadie puede nombrar.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Notas la activación antes de responder.</em>
+              Lees la señal: <strong>"Esto me toca porque conecta con algo mío, no con lo que dijo él."</strong> Respondes desde esa lectura, no desde el disparo. La conversación no escala. Y llevas una pista real sobre tu sistema.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 03 ── -->
+    <div class="book-entry" id="b3" style="animation-delay:0.11s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GR1DRQP1" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GR1DRQP1.01._SX300_.jpg"
+              alt="Actualización del sistema interno"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 03</div>
+          <span class="book-lang-badge badge-es">ES · EBOOK</span>
+          <h2 class="book-title">Actualización del Sistema Interno</h2>
+          <p class="book-hook">Los patrones que no cambian no son falta de voluntad — son código obsoleto. Este libro te muestra cómo identificar qué script está corriendo y cómo instalar la actualización real.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GR1DRQP1" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Llevas meses con el mismo patrón — <strong>postergando, prometiéndote cambiar, volviendo al mismo punto.</strong> Ya no puedes explicarlo como mala suerte.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>Te culpas. "Siempre hago lo mismo."</em>
+              La culpa consume la energía que necesitarías para cambiar. <strong>El ciclo se refuerza.</strong> Intentas más fuerza de voluntad — el mismo instrumento que ya demostró no funcionar.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Identificas cuál es el script que está corriendo.</em>
+              No te atacas — <strong>lees el patrón como código obsoleto.</strong> Lo reemplazas con una instrucción nueva desde la base. El cambio no viene del esfuerzo — viene de la actualización.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 04 ── -->
+    <div class="book-entry" id="b4" style="animation-delay:0.14s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GR1BYKN2" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GR1BYKN2.01._SX300_.jpg"
+              alt="Recover Your Internal Resources"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 04</div>
+          <span class="book-lang-badge badge-en">EN · EBOOK</span>
+          <h2 class="book-title">Recover Your Internal Resources</h2>
+          <p class="book-hook">When you're running on empty, the problem isn't rest — it's that you don't know which resource was depleted or how to restore it. This book gives you the protocol.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GR1BYKN2" target="_blank" rel="noopener noreferrer">
+            View on Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">SCENE</span>
+          <p class="scene-text">End of a brutal week. You have <strong>nothing left.</strong> You're reactive, irritable, scattered — running on fumes but unable to stop.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> AUTOMATIC MODE</div>
+            <div class="panel-body">
+              <em>You scroll. Zone out. Snap at people.</em>
+              You wait to "feel better" without a plan — and <strong>Monday arrives exactly as drained as Friday.</strong> The cycle continues because no recovery actually happened.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> ALETIA MODE</div>
+            <div class="panel-body">
+              <em>You identify which resource was depleted — attention, emotional energy, or clarity.</em>
+              You apply the <strong>corresponding recovery protocol.</strong> By morning you're not just rested — you're reset. The system is available again.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 05 ── -->
+    <div class="book-entry" id="b5" style="animation-delay:0.17s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GN22PYVR" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GN22PYVR.01._SX300_.jpg"
+              alt="Método Aletia: Recupera tus recursos internos"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 05</div>
+          <span class="book-lang-badge badge-es">ES · EBOOK</span>
+          <h2 class="book-title">Método Aletia — Recupera tus Recursos Internos</h2>
+          <p class="book-hook">El núcleo del sistema. Aprende a identificar qué consume tu energía, qué la restaura, y cómo operar desde recursos propios en vez de reaccionar desde el déficit.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GN22PYVR" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Tu pareja llega a casa y dice: <strong>"Nunca tienes tiempo para mí. Te lo pasas en ese computador."</strong> Llevas tres horas trabajando en algo importante.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>Defensa inmediata.</em>
+              <strong>"Estoy trabajando para nosotros."</strong> El tono sube. Nadie escucha al otro. La distancia crece. La noche termina en silencio frío — y ninguno de los dos sabe bien qué pasó.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Reconoces el miedo detrás del reclamo.</em>
+              No es un ataque — es una petición de conexión. Cierras el computador. Dices: <strong>"Tienes razón. Necesitaba que me lo dijeras así."</strong> El reclamo se convierte en acercamiento.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 06 ── -->
+    <div class="book-entry" id="b6" style="animation-delay:0.20s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GPVPTH74" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GPVPTH74.01._SX300_.jpg"
+              alt="El Protocolo Yeshua"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 06</div>
+          <span class="book-lang-badge badge-esp">ES · ESOTÉRICO</span>
+          <h2 class="book-title">El Protocolo Yeshua</h2>
+          <p class="book-hook">Un texto de otra naturaleza. Para quien siente que hay algo detrás de lo que puede ver, explicar o controlar — y que esa pregunta no desaparece por ignorarla.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GPVPTH74" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Son las 3 de la madrugada. No puedes dormir. <strong>Una pregunta que no puedes nombrar</strong> te tiene despierto — no es ansiedad exactamente, pero tampoco es paz.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>Buscas respuestas afuera.</em>
+              Redes, distracciones, explicaciones. El vacío se llena de ruido pero <strong>no desaparece.</strong> Con el tiempo aprendes a ignorarlo — o se convierte en una tensión crónica de fondo.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Reconoces que la pregunta es la puerta, no el problema.</em>
+              Te quedas con ella. <strong>Algo se ordena sin que puedas explicarlo del todo.</strong> El protocolo no da respuestas — enseña a operar desde la pregunta sin que te destruya.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 07 ── -->
+    <div class="book-entry" id="b7" style="animation-delay:0.23s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GPNQJSHN" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GPNQJSHN.01._SX300_.jpg"
+              alt="Reinicio del Sistema"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 07</div>
+          <span class="book-lang-badge badge-es">ES · EBOOK</span>
+          <h2 class="book-title">Reinicio del Sistema</h2>
+          <p class="book-hook">La sola lectura te reinicia. Para cuando el sistema entró en loop y ya no sabe cómo salir por sí solo — este libro es el botón que no sabías que existía.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GPNQJSHN" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Algo importante fracasó. Un proyecto, una relación, una decisión. <strong>El sistema lleva días procesando lo mismo</strong> sin llegar a ningún lado.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>"¿Por qué lo hice?" "¿Qué hubiera pasado si...?"</em>
+              El sistema consume toda la energía disponible procesando lo que ya no puede cambiarse. <strong>No hay output útil.</strong> Solo desgaste.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Reconoces el loop. Activas el protocolo de reinicio.</em>
+              No es olvidar — es <strong>dejar de correr el proceso que ya no produce nada útil.</strong> El sistema vuelve a estar disponible para lo que sigue.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 08 ── -->
+    <div class="book-entry" id="b8" style="animation-delay:0.26s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GNLH2KHV" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GNLH2KHV.01._SX300_.jpg"
+              alt="El Despertar del Administrador"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 08 · MODO DESARROLLADOR</div>
+          <span class="book-lang-badge badge-es">ES · EBOOK</span>
+          <h2 class="book-title">El Despertar del Administrador</h2>
+          <p class="book-hook">El modo desarrollador de tu sistema. Para quien ya sabe que tiene patrones pero no puede intervenir en tiempo real — este libro activa el nivel que los supervisa a todos.</p>
+          <a class="book-cta" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GNLH2KHV" target="_blank" rel="noopener noreferrer">
+            Ver en Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">ESCENA</span>
+          <p class="scene-text">Estás en una discusión que ya sabes cómo va a terminar. <strong>Puedes ver el patrón mientras sucede</strong> — y aun así no puedes salir de él.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> MODO AUTOMÁTICO</div>
+            <div class="panel-body">
+              <em>La parte reactiva toma el control.</em>
+              El administrador observa impotente desde adentro. Después: <strong>"¿Por qué hice eso de nuevo?"</strong> Conocimiento sin intervención — la forma más frustrante de estar atrapado.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> MODO ALETIA</div>
+            <div class="panel-body">
+              <em>Activas el modo administrador en tiempo real.</em>
+              Hay una pausa — no larga, solo real. <strong>Intervienes desde un nivel superior del sistema.</strong> El patrón se interrumpe desde adentro, no desde la fuerza de voluntad.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entry-divider"></div>
+
+
+    <!-- ── LIBRO 09 ── -->
+    <div class="book-entry" id="b9" style="animation-delay:0.29s">
+      <div class="book-header">
+        <div class="book-cover-wrap">
+          <a href="https://www.amazon.com/-/es/Andres-Eliecer-Ramirez-ebook/dp/B0GQQZH2FM" target="_blank" rel="noopener noreferrer">
+            <img class="book-cover"
+              src="https://m.media-amazon.com/images/P/B0GQQZH2FM.01._SX300_.jpg"
+              alt="The Aletia Method"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="book-cover-fallback" style="display:none;">ALETIA OS</div>
+          </a>
+        </div>
+        <div class="book-info">
+          <div class="book-index">MÓDULO 09</div>
+          <span class="book-lang-badge badge-en">EN · EBOOK</span>
+          <h2 class="book-title">The Aletia Method</h2>
+          <p class="book-hook">The English edition of the core method. Internal resources, conscious regulation, and a clearer way to operate when it matters — built for an international audience.</p>
+          <a class="book-cta" href="https://www.amazon.com/-/es/Andres-Eliecer-Ramirez-ebook/dp/B0GQQZH2FM" target="_blank" rel="noopener noreferrer">
+            View on Amazon →
+          </a>
+        </div>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scene-trigger">
+          <span class="scene-label">SCENE</span>
+          <p class="scene-text">You're in a meeting. Someone presents your idea <strong>as if it were their own.</strong> You feel the heat rising. Everyone's watching.</p>
+        </div>
+        <div class="response-split">
+          <div class="response-panel panel-auto">
+            <div class="panel-header"><span class="ph-icon">⚠</span> AUTOMATIC MODE</div>
+            <div class="panel-body">
+              <em>You go quiet — or you snap.</em>
+              Either way, <strong>you leave the room feeling worse.</strong> The resentment follows you for days. You replay what you should have said. Nothing changes.
+            </div>
+          </div>
+          <div class="response-panel panel-aletia">
+            <div class="panel-header"><span class="ph-icon">◈</span> ALETIA MODE</div>
+            <div class="panel-body">
+              <em>You notice the activation and read it as a boundary signal — not a threat.</em>
+              You speak clearly, without escalation: <strong>"I want to note that this originated from my proposal."</strong> You leave the room with your energy — and your reputation — intact.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <span>ALETIA OS</span> — Biblioteca aplicada &nbsp;·&nbsp; 9 módulos disponibles
+    </div>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">← Inicio</a>
+      <a href="alata2.html" class="footer-link">Videos</a>
+      <a href="https://wa.me/56944360655" class="footer-link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Staggered animation on scroll
+      const entries = document.querySelectorAll('.book-entry');
+      const observer = new IntersectionObserver((items) => {
+        items.forEach(item => {
+          if (item.isIntersecting) {
+            item.target.style.opacity = '1';
+            item.target.style.transform = 'translateY(0)';
+            observer.unobserve(item.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      entries.forEach((entry, i) => {
+        entry.style.opacity = '0';
+        entry.style.transform = 'translateY(20px)';
+        entry.style.transition = `opacity 0.55s ease ${i * 0.04}s, transform 0.55s ease ${i * 0.04}s`;
+        observer.observe(entry);
+      });
+
+      // Cover image error handling already in onerror attr
+    });
+  </script>
+
+</body>
+</html>
