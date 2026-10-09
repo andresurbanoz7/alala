@@ -1,1544 +1,293 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aletia OS — Método Aletia | Autorregulación, claridad mental y recursos internos</title>
-  <meta name="description" content="Aletia OS es una arquitectura de autorregulación y optimización interna. Explora el Método Aletia, libros, videos, curso online, protocolos privados y contacto directo." />
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="author" content="Aletia OS" />
-  <link rel="canonical" href="https://aletiaos.com/" />
-  <meta http-equiv="content-language" content="es" />
-  <link rel="alternate" href="https://aletiaos.com/" hreflang="es" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#020608" />
-  <meta property="og:locale" content="es_ES" />
-  <meta property="og:site_name" content="Aletia OS" />
-  <meta property="og:title" content="Aletia OS — Método Aletia | Sistema de autorregulación" />
-  <meta property="og:description" content="Arquitectura de autorregulación y optimización interna: libros, curso, videos, protocolos y contacto directo." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://aletiaos.com/" />
-  <meta property="og:image" content="https://aletiaos.com/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aletia OS — Método Aletia" />
-  <meta name="twitter:description" content="Autorregulación, claridad mental y recursos internos." />
-  <meta name="twitter:image" content="https://aletiaos.com/og-image.png" />
-  <meta name="google-site-verification" content="IF5z11NeBRxj1DKmsv2FAlSrmzlJ2c_AIEWxmG6M6nk" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aletia OS: un método para notar los patrones automáticos que te condicionan y cambiar los que ya no te sirven.">
+</head>
+<body>
+<title>Aletia OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Concept: a quiet dark room, one violet signal. Serif for the thesis, mono only for small labels. */
+:root{--bg:#0c0d12;--surface:#14161e;--fg:#ebe9f2;--muted:#a3a0b3;--accent:#8b7cf6;--on-accent:#0c0d12;--line:#282b39;--code:#7ee6a0;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f6f5f9;--surface:#ffffff;--fg:#1b1a24;--muted:#5d5b6c;--accent:#5b4bd6;--on-accent:#ffffff;--line:#dcdae6;--code:#2f7d4f;color-scheme:light}}
+:root[data-theme="light"]{--bg:#f6f5f9;--surface:#ffffff;--fg:#1b1a24;--muted:#5d5b6c;--accent:#5b4bd6;--on-accent:#ffffff;--line:#dcdae6;--code:#2f7d4f;color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.75 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding-inline:20px;padding-block:64px 80px}
+.mono{font:400 12px/1.4 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;color:var(--muted);margin:0}
+h1,h2{font-family:"EB Garamond",Georgia,serif;font-weight:500;text-wrap:balance;margin:0}
+h1{font-size:clamp(36px,7vw,50px);line-height:1.12;margin:16px 0 20px}
+h2{font-size:31px;line-height:1.2;margin-bottom:12px}
+h3{font:500 16px/1.4 "IBM Plex Sans",sans-serif;margin:0 0 6px}
+p{margin:0}
+.calm{font-size:18px;color:var(--fg);max-width:46ch;margin-bottom:22px}
+.lead{font-size:19px;color:var(--muted);max-width:46ch;margin-bottom:32px}
+.pause{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:12px;background:var(--surface);border:1px solid var(--line);margin-bottom:36px}
+.pause .dot{width:10px;height:10px;margin-top:9px;border-radius:50%;background:var(--code);flex:none;opacity:.8}
+.pause p{color:var(--muted);font-size:16px}
+.btn{font:500 17px/1 "IBM Plex Sans",sans-serif;padding:16px 24px;border-radius:10px;border:0;background:var(--accent);color:var(--on-accent);cursor:pointer}
+.btn-line{background:transparent;color:var(--fg);border:1px solid var(--line)}
+a.link{color:var(--accent);font-weight:500}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.rule{border:0;border-top:1px solid var(--line);margin:68px 0}
+.blocks{display:grid;gap:28px}
+.blocks p{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:32px 26px}
+.progress{margin-bottom:22px}
+.opts button{display:block;width:100%;text-align:left;margin:0 0 10px;padding:15px 16px;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:10px;font:400 17px/1.5 "IBM Plex Sans",sans-serif;cursor:pointer}
+.opts button:hover{border-color:var(--accent)}
+.reading{margin-top:8px}
+.reading p{margin:0 0 1.25em}
+.reading .signal{color:var(--code);font-weight:500}
+.pace{color:var(--muted);font-size:15px;margin:0 0 22px}
+.caption{color:var(--muted);font-size:16px;margin:0 0 20px}
+.next{margin-top:40px;padding-top:30px;border-top:1px solid var(--line)}
+.next h3{font:500 20px/1.3 "EB Garamond",Georgia,serif;margin-bottom:6px}
+.next .sub{color:var(--muted);font-size:15px;margin-bottom:16px}
+.vid{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:transparent;color:var(--fg);text-decoration:none}
+.vid:hover{border-color:var(--accent)}
+.vid small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.book{display:inline-block;margin-top:10px}
+form{margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+label{display:block;font-size:16px;color:var(--muted);margin-bottom:8px}
+input[type=email]{width:100%;box-sizing:border-box;padding:14px 15px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:400 17px "IBM Plex Sans",sans-serif;margin-bottom:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.note{margin-top:18px;color:var(--muted);font-size:15px}
+[hidden]{display:none!important}
+.foot{margin-top:60px;color:var(--muted);font-size:14px;line-height:1.6}
+</style>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<main class="wrap">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://aletiaos.com/#website",
-        "url": "https://aletiaos.com/",
-        "name": "Aletia OS",
-        "description": "Sistema operativo humano orientado a autorregulación, claridad mental y optimización de recursos internos.",
-        "inLanguage": "es",
-        "publisher": { "@id": "https://aletiaos.com/#organization" }
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://aletiaos.com/#organization",
-        "name": "Aletia OS",
-        "url": "https://aletiaos.com/",
-        "logo": "https://aletiaos.com/logo_aletia_os.png",
-        "contactPoint": [{
-          "@type": "ContactPoint",
-          "contactType": "customer support",
-          "telephone": "+56 9 4436 0655",
-          "email": "andreseliecerramirez@gmail.com",
-          "availableLanguage": ["Spanish"]
-        }]
-      }
+  <section id="inicio">
+    <p class="mono">ALETIA OS</p>
+    <div class="pause" aria-label="Pausa breve">
+      <span class="dot" aria-hidden="true"></span>
+      <p>Antes de leer, suelta los hombros y respira una vez, despacio. No tienes que entender nada todavía.</p>
+    </div>
+    <h1>Hay programas que dirigen tu vida sin que lo notes.</h1>
+    <p class="lead">Aletia te ayuda a notarlos, entenderlos y decidir cuáles quieres conservar.</p>
+    <p><button class="btn" id="empezar">Hacer el diagnóstico de 2 minutos</button></p>
+    <p class="mono" style="margin-top:14px">Sin jerga. Sin prisa. Puedes salir cuando quieras.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="blocks" aria-label="Sobre Aletia">
+    <div>
+      <h3>Qué es</h3>
+      <p>Un método para notar los patrones automáticos que te condicionan y cambiar los que ya no te sirven.</p>
+    </div>
+    <div>
+      <h3>Para quién es</h3>
+      <p>Para quien siente que reacciona siempre igual y quiere entender por qué.</p>
+    </div>
+    <div>
+      <h3>Por dónde empezar</h3>
+      <p>Tres preguntas, una lectura de dos minutos sobre tu estado y, si quieres, el siguiente paso.</p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="diagnostico" aria-labelledby="titulo-diagnostico">
+    <h2 id="titulo-diagnostico">Diagnóstico</h2>
+    <p class="caption">No hay respuestas buenas ni malas. Elige la primera que te suene.</p>
+
+    <div class="card">
+      <p class="mono progress" id="progreso">Pregunta 1 de 3</p>
+
+      <div id="vista-preguntas">
+        <h3 id="pregunta" style="font:500 20px/1.4 'EB Garamond',Georgia,serif;margin-bottom:18px"></h3>
+        <div class="opts" id="opciones"></div>
+      </div>
+
+      <div id="vista-lectura" hidden>
+        <h3 id="lectura-titulo" style="font:500 26px/1.25 'EB Garamond',Georgia,serif;margin-bottom:8px"></h3>
+        <p class="pace">Lectura de dos minutos. Puedes leer despacio.</p>
+        <div class="reading" id="lectura-cuerpo"></div>
+
+        <div class="next">
+          <h3>Sigue por aquí</h3>
+          <p class="sub">Un video para este mismo estado, cuando quieras verlo.</p>
+          <a class="vid" id="video-sugerido" target="_blank" rel="noopener noreferrer"></a>
+          <a class="link" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GN22PYVR" target="_blank" rel="noopener noreferrer">Empieza por el Método Aletia en Amazon</a>
+        </div>
+
+        <form id="correo" novalidate>
+          <label for="email">Tu correo, si quieres la siguiente lectura</label>
+          <input type="email" id="email" autocomplete="email" placeholder="nombre@correo.com">
+          <div class="row">
+            <button class="btn" type="submit">Quiero la siguiente lectura</button>
+            <button class="btn btn-line" type="button" id="reiniciar">Volver a empezar</button>
+          </div>
+          <p class="note" id="mensaje" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Este diagnóstico no es médico ni psicológico. Es una lectura para empezar.</p>
+</main>
+
+<script>
+var preguntas = [
+  { q: "¿Cómo te sientes al final del día?", ops: [
+    { t: "Vacío, aunque no haya pasado nada malo", r: "APAGADO" },
+    { t: "Agotado, con el celular todavía en la mano", r: "RUIDO" },
+    { t: "Inquieto cuando todo se queda en silencio", r: "LEOPARDO" },
+    { t: "Sin saber si lo que quiero es realmente mío", r: "DESCENSO" } ] },
+  { q: "Cuando tienes un momento libre, ¿qué haces primero?", ops: [
+    { t: "Busco algo que mirar o escuchar", r: "RUIDO" },
+    { t: "Me siento incómodo sin nada que hacer", r: "LEOPARDO" },
+    { t: "Pienso en lo que debería estar haciendo", r: "DESCENSO" },
+    { t: "Me quedo en blanco, sin ganas de nada", r: "APAGADO" } ] },
+  { q: "Al pensar en tu rumbo, ¿qué te pasa?", ops: [
+    { t: "No sé hacia dónde ir", r: "DESCENSO" },
+    { t: "Lo sé, pero no me enciende", r: "APAGADO" },
+    { t: "Me da miedo equivocarme", r: "LEOPARDO" },
+    { t: "Me distraigo y lo dejo para después", r: "RUIDO" } ] }
+];
+
+var lecturas = {
+  APAGADO: {
+    titulo: "Tu sistema corre en vacío",
+    video: { t: "Protocolo de entusiasmo y frecuencia", d: "Para cuando todo cumple, pero nada enciende.", u: "https://www.youtube.com/watch?v=gs_wOWkTkYE" },
+    cuerpo: [
+      "Nada en ti está roto.",
+      "Estás apagado. Y llevas tanto tiempo así que ya te parece normal.",
+      "Te levantas, cumples, respondes. Nada te duele del todo. Nada te enciende del todo.",
+      "Y te dices: “así es la vida de adulto”.",
+      "Esa frase es un programa. Se instaló sin que lo eligieras, y se disfraza de sentido común.",
+      "Cuando el sistema se apaga, sigue funcionando, pero en vacío. Cumple, pero no decide. Responde, pero no dirige.",
+      "No lo ves. Lo reconoces.",
+      "Suele aparecer así: un cansancio que no se quita durmiendo, ganas de algo que todavía no tiene forma, y una pregunta que llega y se va rápido: “¿y esto para qué?”.",
+      "Ese vacío no es un fallo tuyo. Es una señal de que el programa que corre ya no te sirve.",
+      "Hoy no necesitas arreglar tu vida. Solo necesitas notar una cosa: ¿qué parte de tu día eliges tú, y cuál corre sola?"
+    ]
+  },
+  RUIDO: {
+    titulo: "El ruido te está anestesiando",
+    video: { t: "Reinicio del hardware biológico", d: "Para cuando el cuerpo ya no descansa aunque pares.", u: "https://www.youtube.com/watch?v=M4sCa-3mVkk" },
+    cuerpo: [
+      "No es que no tengas tiempo para pensar.",
+      "Es que cada vez que aparece un espacio vacío, algo lo llena. Un video. Una notificación. Otro video.",
+      "Lo llamas descanso. Pero no te deja más liviano. Te deja igual, o peor.",
+      "El ruido no siempre es entretención. Muchas veces es anestesia.",
+      "Y tiene un truco: te calma justo cuando algo dentro de ti empieza a hablar.",
+      "Eso que sube en el silencio no es aburrimiento. Es una pregunta que no quieres escuchar todavía.",
+      "Así se forma el círculo: te sientes apagado, buscas algo que te mueva, el ruido te calma por un rato, y vuelves a sentirte apagado.",
+      "No lo ves. Lo reconoces.",
+      "Hoy no necesitas apagar todo. Solo necesitas notar una cosa: ¿qué sientes justo antes de buscar algo que mirar?"
+    ]
+  },
+  LEOPARDO: {
+    titulo: "Tu alarma se activa con la quietud",
+    video: { t: "Reinicio del hardware biológico", d: "Para cuando el cuerpo lee el silencio como peligro.", u: "https://www.youtube.com/watch?v=M4sCa-3mVkk" },
+    cuerpo: [
+      "Es un programa antiguo, no una prueba de peligro.",
+      "Hace miles de años, el silencio y la quietud podían significar un depredador cerca. Tu cuerpo todavía lo recuerda.",
+      "Por eso, cuando todo se calla, algo dentro de ti se activa antes de que pienses.",
+      "Y el impulso es el de siempre: moverte, distraerte, hacer algo para escapar.",
+      "Pero aquí no hay ningún leopardo. Solo hay una pausa.",
+      "No lo ves. Lo reconoces.",
+      "Quédate un momento más en la quietud. No para resolver nada, solo para observar cómo sube la sensación y cómo baja.",
+      "El reflejo no se apaga porque lo combatas. Se apaga cuando comprueba, una y otra vez, que nada te persigue.",
+      "Hoy no necesitas dejar de sentirlo. Solo necesitas notar una cosa: ¿qué es lo primero que quieres hacer cuando el silencio llega?"
+    ]
+  },
+  DESCENSO: {
+    titulo: "Escuchas voces que no son tuyas",
+    video: { t: "Decodificación del script obsoleto", d: "Para cuando no sabes si un deseo es tuyo.", u: "https://www.youtube.com/watch?v=dJT-0j3Q5y8" },
+    cuerpo: [
+      "Antes de decidir qué quieres, conviene separar lo propio de lo prestado.",
+      "Hay un coro dentro de tu sistema. Tiene voces de tu familia, de la escuela, de la publicidad, de quien te dijo cómo debías ser.",
+      "Muchas de esas voces hablan con tono de certeza: deberías, tienes que, lo normal es.",
+      "Pero la voz que es tuya no suele hablar así. No dice deberías. Dice esto.",
+      "No lo ves. Lo reconoces.",
+      "Pregúntate algo simple: ¿naciste de mí o te pusieron aquí?",
+      "No necesitas responder rápido. Basta con dejar la pregunta abierta un rato.",
+      "Bajar no es un logro que se consigue con esfuerzo. Es una práctica: volver, una y otra vez, a lo que sientes de verdad.",
+      "Tu voz no tiene que sonar bien hoy. Solo tiene que sonar tuya. ¿Qué parte de lo que haces hoy te sale de adentro, y cuál repites porque se espera?"
     ]
   }
-  </script>
-
-  <style>
-    :root {
-      --bg: #020608;
-      --bg1: #050d10;
-      --bg2: #081318;
-      --surface: rgba(0,255,170,0.03);
-      --surface2: rgba(0,255,170,0.055);
-      --text: #e8f4f0;
-      --muted: rgba(200,230,220,0.62);
-      --dim: rgba(200,230,220,0.38);
-      --green: #00ffaa;
-      --green2: #00cc88;
-      --green-dim: rgba(0,255,170,0.15);
-      --green-glow: rgba(0,255,170,0.08);
-      --amber: #f0c060;
-      --amber-dim: rgba(240,192,96,0.12);
-      --blue: #38c8ff;
-      --blue-dim: rgba(56,200,255,0.10);
-      --red: #ff5566;
-      --line: rgba(0,255,170,0.10);
-      --line2: rgba(0,255,170,0.06);
-      --radius: 4px;
-      --radius2: 8px;
-      --mono: 'JetBrains Mono', 'Courier New', monospace;
-      --sans: 'DM Sans', sans-serif;
-      --display: 'Syne', sans-serif;
-      --sidebar-w: 280px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── SCAN-LINE OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.04) 2px,
-        rgba(0,0,0,0.04) 4px
-      );
-    }
-
-    /* ── GRID BACKGROUND ── */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background-image:
-        linear-gradient(rgba(0,255,170,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,170,0.025) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ── LAYOUT ── */
-    .layout {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: var(--sidebar-w) 1fr;
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      background: rgba(2,8,10,0.92);
-      border-right: 1px solid var(--line);
-      backdrop-filter: blur(20px);
-    }
-
-    .sidebar::-webkit-scrollbar { width: 3px; }
-    .sidebar::-webkit-scrollbar-track { background: transparent; }
-    .sidebar::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
-
-    /* brand */
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 22px 20px 18px;
-      border-bottom: 1px solid var(--line2);
-    }
-
-    .brand-logo {
-      width: 40px; height: 40px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 10px rgba(0,255,170,0.5));
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-name {
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--green);
-      letter-spacing: 3px;
-    }
-
-    .brand-tagline {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      color: var(--dim);
-      letter-spacing: 1px;
-    }
-
-    /* status bar */
-    .status-bar {
-      padding: 10px 20px;
-      background: var(--green-glow);
-      border-bottom: 1px solid var(--line2);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .status-dot {
-      width: 6px; height: 6px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: blink 2.4s ease-in-out infinite;
-      box-shadow: 0 0 6px var(--green);
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .status-text {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--green);
-      letter-spacing: 1.5px;
-    }
-
-    /* nav section */
-    .nav-section {
-      padding: 14px 20px 8px;
-    }
-
-    .nav-label {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      color: var(--dim);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0 0 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--line2);
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: var(--radius);
-      border: 1px solid transparent;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.2s ease;
-      margin-bottom: 2px;
-      cursor: pointer;
-    }
-
-    .nav-item:hover {
-      color: var(--green);
-      border-color: var(--line);
-      background: var(--green-glow);
-      transform: translateX(4px);
-    }
-
-    .nav-item.active {
-      color: var(--green);
-      border-color: rgba(0,255,170,0.2);
-      background: var(--green-glow);
-    }
-
-    .nav-item .nav-index {
-      color: var(--dim);
-      font-size: 0.58rem;
-      min-width: 18px;
-    }
-
-    .nav-item .nav-arrow {
-      margin-left: auto;
-      opacity: 0;
-      font-size: 0.65rem;
-      transition: opacity 0.2s;
-    }
-
-    .nav-item:hover .nav-arrow { opacity: 1; }
-
-    /* module links */
-    .module-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: var(--radius);
-      border: 1px solid transparent;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 400;
-      transition: all 0.2s ease;
-      margin-bottom: 2px;
-    }
-
-    .module-item:hover {
-      color: var(--amber);
-      border-color: rgba(240,192,96,0.2);
-      background: var(--amber-dim);
-      transform: translateX(4px);
-    }
-
-    .module-item .mod-icon {
-      font-size: 0.7rem;
-      opacity: 0.7;
-      min-width: 16px;
-      text-align: center;
-    }
-
-    .module-item .mod-badge {
-      margin-left: auto;
-      font-size: 0.55rem;
-      padding: 2px 6px;
-      border-radius: 2px;
-      background: var(--amber-dim);
-      color: var(--amber);
-      border: 1px solid rgba(240,192,96,0.2);
-    }
-
-    /* contact quick */
-    .sidebar-contact {
-      margin-top: auto;
-      border-top: 1px solid var(--line2);
-      padding: 14px 20px 20px;
-    }
-
-    .contact-quick {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: var(--radius);
-      border: 1px solid transparent;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 500;
-      transition: all 0.2s;
-      margin-bottom: 6px;
-    }
-
-    .contact-quick.whatsapp {
-      color: #4ade80;
-      border-color: rgba(74,222,128,0.2);
-      background: rgba(74,222,128,0.05);
-    }
-
-    .contact-quick.whatsapp:hover {
-      background: rgba(74,222,128,0.1);
-      transform: translateX(4px);
-    }
-
-    .contact-quick.email {
-      color: var(--blue);
-      border-color: var(--blue-dim);
-      background: rgba(56,200,255,0.03);
-    }
-
-    .contact-quick.email:hover {
-      background: var(--blue-dim);
-      transform: translateX(4px);
-    }
-
-    /* ── MAIN CONTENT ── */
-    .content {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    /* ── TOP BAR ── */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 36px;
-      background: rgba(2,8,10,0.88);
-      border-bottom: 1px solid var(--line2);
-      backdrop-filter: blur(20px);
-    }
-
-    .topbar-path {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--dim);
-      letter-spacing: 0.5px;
-    }
-
-    .topbar-path span {
-      color: var(--green);
-    }
-
-    .topbar-stats {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .stat-pill {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      color: var(--dim);
-    }
-
-    .stat-pill .bar {
-      width: 36px;
-      height: 3px;
-      background: rgba(0,255,170,0.12);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .stat-pill .bar-fill {
-      height: 100%;
-      background: var(--green);
-      border-radius: 2px;
-      box-shadow: 0 0 6px var(--green);
-    }
-
-    /* ── SECTIONS ── */
-    .section {
-      padding: 52px 36px;
-      border-bottom: 1px solid var(--line2);
-    }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 0;
-      min-height: calc(100vh - 46px);
-      display: grid;
-      grid-template-rows: auto 1fr;
-    }
-
-    .boot-log {
-      padding: 22px 36px 16px;
-      border-bottom: 1px solid var(--line2);
-      background: rgba(0,255,170,0.015);
-    }
-
-    .boot-line {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--dim);
-      line-height: 1.8;
-      display: flex;
-      gap: 14px;
-    }
-
-    .boot-line .ts {
-      color: rgba(0,255,170,0.3);
-      min-width: 52px;
-    }
-
-    .boot-line .ok {
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .boot-line .warn {
-      color: var(--amber);
-      font-weight: 700;
-    }
-
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 0;
-      align-items: stretch;
-    }
-
-    .hero-left {
-      padding: 44px 36px 44px;
-      border-right: 1px solid var(--line2);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .system-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--green);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      padding: 6px 12px;
-      border: 1px solid rgba(0,255,170,0.2);
-      border-radius: var(--radius);
-      background: var(--green-glow);
-      width: fit-content;
-    }
-
-    .system-tag::before {
-      content: '◈';
-      animation: pulse-icon 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-icon {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    h1.os-title {
-      font-family: var(--display);
-      font-size: clamp(4rem, 9vw, 7.5rem);
-      font-weight: 800;
-      line-height: 0.88;
-      letter-spacing: -4px;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    h1.os-title .line-green {
-      display: block;
-      color: var(--green);
-      text-shadow: 0 0 30px rgba(0,255,170,0.35);
-    }
-
-    .version-tag {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--amber);
-      letter-spacing: 2px;
-      margin-bottom: 28px;
-      margin-top: 10px;
-    }
-
-    .hero-desc {
-      max-width: 480px;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-
-    .hero-desc strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 18px;
-      border-radius: var(--radius);
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: #020c08;
-      border-color: var(--green);
-    }
-
-    .btn-primary:hover {
-      background: #00ffc0;
-      box-shadow: 0 0 24px rgba(0,255,170,0.35);
-      transform: translateY(-2px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--green);
-      border-color: rgba(0,255,170,0.25);
-    }
-
-    .btn-ghost:hover {
-      background: var(--green-glow);
-      border-color: rgba(0,255,170,0.5);
-      transform: translateY(-2px);
-    }
-
-    .btn-whatsapp {
-      background: rgba(74,222,128,0.08);
-      color: #4ade80;
-      border-color: rgba(74,222,128,0.25);
-    }
-
-    .btn-whatsapp:hover {
-      background: rgba(74,222,128,0.15);
-      border-color: rgba(74,222,128,0.5);
-      transform: translateY(-2px);
-    }
-
-    /* ── HERO RIGHT: SYSTEM MONITOR ── */
-    .hero-right {
-      padding: 28px 28px 28px;
-      background: rgba(0,255,170,0.014);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .monitor-header {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      color: var(--dim);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--line2);
-      padding-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .monitor-header .live {
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .monitor-header .live::before {
-      content: '';
-      width: 5px; height: 5px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: blink 1.8s infinite;
-      box-shadow: 0 0 5px var(--green);
-    }
-
-    .process-card {
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      background: rgba(0,0,0,0.25);
-      transition: all 0.2s ease;
-    }
-
-    .process-card:hover {
-      border-color: rgba(0,255,170,0.2);
-      background: rgba(0,255,170,0.025);
-    }
-
-    .process-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .process-name {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--green);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .process-id {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      color: var(--dim);
-    }
-
-    .process-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-
-    .process-bar-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .process-bar {
-      flex: 1;
-      height: 3px;
-      background: rgba(0,255,170,0.08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .process-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--green), var(--blue));
-      border-radius: 2px;
-      box-shadow: 0 0 8px rgba(0,255,170,0.4);
-    }
-
-    .process-pct {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      color: var(--dim);
-      min-width: 28px;
-      text-align: right;
-    }
-
-    /* ── SECTION HEADERS ── */
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 8px;
-    }
-
-    .section-num {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--green);
-      letter-spacing: 2px;
-      opacity: 0.6;
-    }
-
-    h2.section-title {
-      font-family: var(--display);
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
-    }
-
-    .section-intro {
-      color: var(--muted);
-      line-height: 1.75;
-      max-width: 680px;
-      margin-bottom: 28px;
-      font-size: 0.97rem;
-    }
-
-    /* ── MODULE CARDS ── */
-    .module-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .module-card {
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      background: rgba(0,0,0,0.2);
-      position: relative;
-      transition: all 0.25s ease;
-      overflow: hidden;
-    }
-
-    .module-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .module-card:hover {
-      border-color: rgba(0,255,170,0.2);
-      background: rgba(0,255,170,0.02);
-      transform: translateY(-3px);
-    }
-
-    .module-card:hover::before { opacity: 1; }
-
-    .module-card-index {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      color: var(--dim);
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-
-    .module-card h3 {
-      font-family: var(--display);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
-    }
-
-    .module-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── ACCESS GRID ── */
-    .access-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .access-card {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      background: rgba(0,0,0,0.2);
-      text-decoration: none;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .access-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .access-card.type-green::after { background: var(--green); }
-    .access-card.type-amber::after { background: var(--amber); }
-    .access-card.type-blue::after { background: var(--blue); }
-
-    .access-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .access-card.type-green:hover {
-      border-color: rgba(0,255,170,0.25);
-      background: rgba(0,255,170,0.025);
-    }
-
-    .access-card.type-amber:hover {
-      border-color: rgba(240,192,96,0.25);
-      background: var(--amber-dim);
-    }
-
-    .access-card.type-blue:hover {
-      border-color: rgba(56,200,255,0.25);
-      background: var(--blue-dim);
-    }
-
-    .access-card:hover::after { opacity: 1; }
-
-    .access-label {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .type-green .access-label { color: var(--green); }
-    .type-amber .access-label { color: var(--amber); }
-    .type-blue .access-label { color: var(--blue); }
-
-    .access-card h3 {
-      font-family: var(--display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .access-card p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.55;
-      flex: 1;
-    }
-
-    .access-arrow {
-      margin-top: 14px;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s;
-    }
-
-    .type-green .access-arrow { color: var(--green); }
-    .type-amber .access-arrow { color: var(--amber); }
-    .type-blue .access-arrow { color: var(--blue); }
-    .access-card:hover .access-arrow { gap: 10px; }
-
-    /* ── FORM SECTION ── */
-    .form-container {
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      overflow: hidden;
-      background: rgba(0,0,0,0.3);
-    }
-
-    .form-header {
-      padding: 14px 20px;
-      background: var(--green-glow);
-      border-bottom: 1px solid var(--line);
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--green);
-      letter-spacing: 2px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .form-header::before {
-      content: '▶';
-      font-size: 0.55rem;
-    }
-
-    /* ── CONTACT SECTION ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .contact-card {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      background: rgba(0,0,0,0.2);
-      transition: all 0.25s;
-    }
-
-    .contact-card:hover {
-      border-color: rgba(0,255,170,0.2);
-      background: var(--green-glow);
-    }
-
-    .contact-type {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      color: var(--dim);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .contact-card h3 {
-      font-family: var(--display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-
-    .contact-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 18px;
-    }
-
-    .contact-detail-link {
-      display: block;
-      margin-top: 12px;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--dim);
-      transition: color 0.2s;
-    }
-
-    .contact-detail-link:hover { color: var(--green); }
-
-    /* ── FOOTER ── */
-    .footer {
-      padding: 20px 36px;
-      border-top: 1px solid var(--line2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-left {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--dim);
-      letter-spacing: 1px;
-    }
-
-    .footer-left span {
-      color: var(--green);
-    }
-
-    .footer-right {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--dim);
-    }
-
-    /* ── WHATSAPP FLOAT ── */
-    .whatsapp-float {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
-      background: #0f1f14;
-      border: 1px solid rgba(74,222,128,0.35);
-      border-radius: var(--radius2);
-      color: #4ade80;
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      text-decoration: none;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(74,222,128,0.12);
-      transition: all 0.25s;
-    }
-
-    .whatsapp-float:hover {
-      background: rgba(74,222,128,0.1);
-      border-color: rgba(74,222,128,0.6);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(74,222,128,0.2);
-      transform: translateY(-2px);
-    }
-
-    .whatsapp-float .wf-dot {
-      width: 7px; height: 7px;
-      background: #4ade80;
-      border-radius: 50%;
-      animation: blink 1.5s infinite;
-      box-shadow: 0 0 6px #4ade80;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1080px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar {
-        position: relative;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 12px;
-        overflow-x: auto;
-      }
-      .brand { padding: 8px 12px; border-bottom: none; border-right: 1px solid var(--line2); }
-      .status-bar { display: none; }
-      .nav-section { padding: 8px; }
-      .nav-item, .module-item { padding: 6px 10px; font-size: 0.65rem; }
-      .sidebar-contact { margin-top: 0; border-top: none; border-left: 1px solid var(--line2); padding: 8px 12px; }
-      .hero-body { grid-template-columns: 1fr; }
-      .hero-left { border-right: none; border-bottom: 1px solid var(--line2); }
-      .module-grid, .access-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .section { padding: 36px 18px; }
-      .hero-left { padding: 28px 18px; }
-      .hero-right { padding: 20px 18px; }
-      .boot-log { padding: 14px 18px; }
-      .topbar { padding: 8px 18px; }
-      .footer { padding: 16px 18px; }
-      .module-grid, .access-grid, .contact-grid { grid-template-columns: 1fr; }
-      h1.os-title { font-size: clamp(3rem, 16vw, 5rem); letter-spacing: -2px; }
-      .topbar-stats { display: none; }
-      .whatsapp-float { left: 14px; right: 14px; justify-content: center; bottom: 14px; }
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-left > * {
-      animation: fadeInUp 0.6s ease backwards;
-    }
-
-    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
-    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
-    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
-    .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
-    .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
-
-    /* Glitch effect on logo */
-    .brand-logo {
-      animation: logoGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes logoGlow {
-      0%, 100% { filter: drop-shadow(0 0 10px rgba(0,255,170,0.5)); }
-      50% { filter: drop-shadow(0 0 18px rgba(0,255,170,0.8)) drop-shadow(0 0 40px rgba(0,255,170,0.25)); }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="layout">
-
-    <!-- ── SIDEBAR ── -->
-    <nav class="sidebar" aria-label="Navegación principal">
-
-      <div class="brand">
-        <img class="brand-logo" src="logo_aletia_os.png" alt="Logo Aletia OS" width="40" height="40" loading="eager" />
-        <div class="brand-text">
-          <div class="brand-name">ALETIA OS</div>
-          <div class="brand-tagline">HUMAN OPERATING SYSTEM</div>
-        </div>
-      </div>
-
-      <div class="status-bar">
-        <div class="status-dot"></div>
-        <div class="status-text">SISTEMA ACTIVO — KERNEL v2.0</div>
-      </div>
-
-      <div class="nav-section">
-        <div class="nav-label">Sistema</div>
-        <a href="#inicio" class="nav-item active">
-          <span class="nav-index">01</span>
-          <span>INICIO</span>
-          <span class="nav-arrow">→</span>
-        </a>
-        <a href="#que-es" class="nav-item">
-          <span class="nav-index">02</span>
-          <span>QUÉ ES</span>
-          <span class="nav-arrow">→</span>
-        </a>
-        <a href="#accesos" class="nav-item">
-          <span class="nav-index">03</span>
-          <span>ACCESOS</span>
-          <span class="nav-arrow">→</span>
-        </a>
-        <a href="#guia" class="nav-item">
-          <span class="nav-index">04</span>
-          <span>RECURSOS</span>
-          <span class="nav-arrow">→</span>
-        </a>
-        <a href="#contacto" class="nav-item">
-          <span class="nav-index">05</span>
-          <span>CONTACTO</span>
-          <span class="nav-arrow">→</span>
-        </a>
-      </div>
-
-      <div class="nav-section">
-        <div class="nav-label">Módulos</div>
-        <a class="module-item" href="https://andreseliecerramirez.kpages.online/el-codigo-del-arquitecto-manual-de-ingenieria-humana-para-recuperar-tu-soberania-e00bf9f1-a5c1-42f2-a692-6b2e763025ec">
-          <span class="mod-icon">⬡</span>
-          <span>CURSO ONLINE</span>
-          <span class="mod-badge">ENTRAR</span>
-        </a>
-        <a class="module-item" href="https://www.amazon.es/Aletia-OS-El-Arquitecto-Realidad1/dp/B0GLKXJ26B">
-          <span class="mod-icon">◫</span>
-          <span>MANUAL HARDWARE</span>
-          <span class="mod-badge">AMAZON</span>
-        </a>
-        <a class="module-item" href="alata2.html">
-          <span class="mod-icon">▷</span>
-          <span>VIDEOS / MEDIA</span>
-          <span class="mod-badge">VER</span>
-        </a>
-      <a class="access-card type-amber" href="libros.html">
-  <div class="access-label">◫ Biblioteca</div>
-  <h3>Libros Aletia OS</h3>
-  <p>Todos los títulos disponibles del Método Aletia — físico, digital y ediciones en inglés.</p>
-  <div class="access-arrow">Ver biblioteca →</div>
-</a>
-        <a class="module-item" href="https://form.jotform.com/260436046819056">
-          <span class="mod-icon">⬡</span>
-          <span>PROTOCOLOS PRIVADOS</span>
-          <span class="mod-badge">ACCESO</span>
-        </a>
-      </div>
-
-      <div class="sidebar-contact">
-        <div class="nav-label" style="margin-bottom:8px;">Contacto directo</div>
-        <a class="contact-quick whatsapp" href="https://wa.me/56944360655" target="_blank" rel="noopener noreferrer">
-          <span>⬡</span>
-          <span>WhatsApp</span>
-          <span style="margin-left:auto; font-size:0.58rem; opacity:0.7">+56 9 4436 0655</span>
-        </a>
-        <a class="contact-quick email" href="mailto:andreseliecerramirez@gmail.com">
-          <span>◈</span>
-          <span>Email</span>
-          <span style="margin-left:auto; font-size:0.58rem; opacity:0.7">Enviar</span>
-        </a>
-      </div>
-
-    </nav>
-
-    <!-- ── MAIN ── -->
-    <main class="content">
-
-      <!-- top bar -->
-      <div class="topbar">
-        <div class="topbar-path">
-          <span>aletiaos.com</span> / root / inicio
-        </div>
-        <div class="topbar-stats">
-          <div class="stat-pill">
-            <span>ATENCIÓN</span>
-            <div class="bar"><div class="bar-fill" style="width:72%"></div></div>
-            <span>72%</span>
-          </div>
-          <div class="stat-pill">
-            <span>CLARIDAD</span>
-            <div class="bar"><div class="bar-fill" style="width:88%"></div></div>
-            <span>88%</span>
-          </div>
-          <div class="stat-pill">
-            <span>ENERGÍA</span>
-            <div class="bar"><div class="bar-fill" style="width:61%"></div></div>
-            <span>61%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── HERO ── -->
-      <section class="hero" id="inicio">
-
-        <div class="boot-log">
-          <div class="boot-line"><span class="ts">0.001s</span><span class="ok">[ OK ]</span><span>Kernel Aletia iniciado — autorregulación activa</span></div>
-          <div class="boot-line"><span class="ts">0.012s</span><span class="ok">[ OK ]</span><span>Módulo de atención consciente cargado</span></div>
-          <div class="boot-line"><span class="ts">0.031s</span><span class="warn">[ >> ]</span><span>Detectado modo automático — iniciando protocolo de observación</span></div>
-          <div class="boot-line"><span class="ts">0.044s</span><span class="ok">[ OK ]</span><span>Sistema listo — respuesta consciente disponible</span></div>
-        </div>
-
-        <div class="hero-body">
-          <div class="hero-left">
-            <div class="system-tag">HUMAN OPERATING SYSTEM v2.0</div>
-
-            <h1 class="os-title">
-              ALETIA<span class="line-green">OS</span>
-            </h1>
-
-            <div class="version-tag">// MÉTODO ALETIA — ARQUITECTURA DE AUTORREGULACIÓN</div>
-
-            <p class="hero-desc">
-              Tu sistema interno funciona en modo automático la mayor parte del tiempo.
-              <strong>Aletia OS</strong> es la arquitectura que te permite recuperar el control:
-              observar con claridad, regular tu estado y responder — en lugar de reaccionar —
-              cuando algo realmente importa.
-            </p>
-
-            <div class="hero-ctas">
-              <a href="alata2.html" class="btn btn-primary">▷ Ver videos / media</a>
-              <a href="https://wa.me/56944360655" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">⬡ WhatsApp directo</a>
-              <a href="mailto:andreseliecerramirez@gmail.com" class="btn btn-ghost">◈ Escribir email</a>
-            </div>
-          </div>
-
-          <div class="hero-right">
-            <div class="monitor-header">
-              <span>ALETIA OS // SYSTEM AWAKENING</span>
-              <span class="live">EN VIVO</span>
-            </div>
-
-            <div style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              padding: 20px 16px;
-              background: rgba(0,0,0,0.3);
-            ">
-              <iframe
-                src="preview_aletia_os.html"
-                style="
-                  width: 100%;
-                  max-width: 280px;
-                  aspect-ratio: 9/16;
-                  border: none;
-                  border-radius: 16px;
-                  display: block;
-                  box-shadow: 0 0 40px rgba(0,255,170,0.12), 0 0 0 1px rgba(0,255,170,0.15);
-                "
-                allow="autoplay"
-                loading="lazy"
-                title="Aletia OS — System Awakening Reel">
-              </iframe>
-            </div>
-
-            <div style="
-              padding: 10px 16px 16px;
-              text-align: center;
-              font-family: var(--mono);
-              font-size: 0.58rem;
-              color: var(--dim);
-              letter-spacing: 2px;
-              text-transform: uppercase;
-            ">
-              LOOP 15s &nbsp;·&nbsp; CONSCIOUSNESS TRACE 0x7F &nbsp;·&nbsp; FOUND FOOTAGE
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── QUÉ ES ── -->
-      <section class="section" id="que-es">
-        <div class="section-header">
-          <span class="section-num">02 //</span>
-          <h2 class="section-title">¿Qué es Aletia OS?</h2>
-        </div>
-        <p class="section-intro">
-          Aletia OS propone una lectura del ser humano como un sistema vivo que puede recuperar orden, energía y dirección.
-          No se trata solo de entender ideas — se trata de instalar una forma más estable de estar presente,
-          observar con claridad y relacionarse mejor con la propia experiencia.
-        </p>
-
-        <div class="module-grid">
-          <div class="module-card">
-            <div class="module-card-index">MÓDULO 01 // CLARIDAD</div>
-            <h3>Claridad interna</h3>
-            <p>Distinguir entre reacción automática y presencia consciente. Una experiencia más lúcida y menos gobernada por la inercia del sistema.</p>
-          </div>
-
-          <div class="module-card">
-            <div class="module-card-index">MÓDULO 02 // ARQUITECTURA</div>
-            <h3>Estructura práctica</h3>
-            <p>No solo una reflexión conceptual — una forma concreta de ordenar atención, lenguaje y conducta en tiempo real.</p>
-          </div>
-
-          <div class="module-card">
-            <div class="module-card-index">MÓDULO 03 // RECURSOS</div>
-            <h3>Profundización progresiva</h3>
-            <p>Desde lectura, video o formación hasta contacto directo — múltiples entradas al sistema según tu punto de partida.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── ACCESOS ── -->
-      <section class="section" id="accesos">
-        <div class="section-header">
-          <span class="section-num">03 //</span>
-          <h2 class="section-title">Accesos principales</h2>
-        </div>
-        <p class="section-intro">
-          Estas son las puertas de entrada al sistema. Cada una ofrece una forma distinta de explorar y profundizar en el Método Aletia.
-        </p>
-
-        <div class="access-grid">
-          <a class="access-card type-green" href="https://andreseliecerramirez.kpages.online/el-codigo-del-arquitecto-manual-de-ingenieria-humana-para-recuperar-tu-soberania-e00bf9f1-a5c1-42f2-a692-6b2e763025ec">
-            <div class="access-label">⬡ Formación</div>
-            <h3>Curso online</h3>
-            <p>Una entrada formativa para recorrer el método de manera guiada, estructurada y con profundidad práctica.</p>
-            <div class="access-arrow">Acceder al curso →</div>
-          </a>
-
-          <a class="access-card type-amber" href="https://www.amazon.es/Aletia-OS-El-Arquitecto-Realidad1/dp/B0GLKXJ26B">
-            <div class="access-label">◫ Hardware</div>
-            <h3>Manual Hardware</h3>
-            <p>Publicación para quienes prefieren comenzar por lectura, comprensión conceptual y base reflexiva.</p>
-            <div class="access-arrow">Ver en Amazon →</div>
-          </a>
-
-          <a class="access-card type-blue" href="alata2.html">
-            <div class="access-label">▷ Media</div>
-            <h3>Videos / Media</h3>
-            <p>Contenido audiovisual para acercarte al lenguaje y la experiencia Aletia de forma directa y dinámica.</p>
-            <div class="access-arrow">Abrir videos →</div>
-          </a>
-
-          <a class="access-card type-amber" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GN22PYVR?ref_=ast_author_dp_rw&th=1&psc=1&dib=eyJ2IjoiMSJ9.rhRrMDYNlxZZRVdAYqNS33K0-6PXX6SDjEF8fag4SsYdDw43Ki3UMAZPmaECMGiGBO2ZQc-OnCRiHnb2AHyz9Y6MApx6zHQwRKyuXVr-vhCgFDrROVGvbrmvWr4wWmn6.M2_ge0HUfyiDYl2-ZiXW6IQItOm56vbX5mDiXaTwYo8&dib_tag=AUTHOR">
-            <div class="access-label">◫ Ebook</div>
-            <h3>The Aletia Method</h3>
-            <p>Versión digital del método. Acceso inmediato desde cualquier dispositivo.</p>
-            <div class="access-arrow">Ver ebook →</div>
-          </a>
-
-          <a class="access-card type-green" href="https://form.jotform.com/260436046819056">
-            <div class="access-label">⬡ Privado</div>
-            <h3>Protocolos privados</h3>
-            <p>Acceso a materiales y protocolos avanzados para quienes ya están dentro del sistema.</p>
-            <div class="access-arrow">Entrar →</div>
-          </a>
-
-          <a class="access-card type-blue" href="https://wa.me/56944360655" target="_blank" rel="noopener noreferrer">
-            <div class="access-label">◈ Directo</div>
-            <h3>Contacto personal</h3>
-            <p>Orientación directa sobre por dónde comenzar o continuar según tu situación específica.</p>
-            <div class="access-arrow">Iniciar conversación →</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── GUÍA / FORM ── -->
-      <section class="section" id="guia">
-        <div class="section-header">
-          <span class="section-num">04 //</span>
-          <h2 class="section-title">Empieza a observar tu sistema</h2>
-        </div>
-        <p class="section-intro">
-          Descarga una guía breve para detectar cuándo tu sistema está en activación y cómo recuperar claridad en momentos clave.
-        </p>
-
-        <div class="form-container">
-          <div class="form-header">PROTOCOLO DE ENTRADA — RECURSO GRATUITO</div>
-          <iframe
-            src="https://form.jotform.com/260436046819056"
-            width="100%"
-            height="480"
-            frameborder="0"
-            style="display:block; background: transparent;">
-          </iframe>
-        </div>
-      </section>
-
-      <!-- ── CONTACTO ── -->
-      <section class="section" id="contacto">
-        <div class="section-header">
-          <span class="section-num">05 //</span>
-          <h2 class="section-title">Contacto directo</h2>
-        </div>
-        <p class="section-intro">
-          Para consultas, colaboraciones o recibir orientación directa sobre el Método Aletia. Canal abierto y sin intermediarios.
-        </p>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <div class="contact-type">⬡ Canal rápido</div>
-            <h3>WhatsApp directo</h3>
-            <p>La vía más rápida para iniciar conversación, resolver dudas o solicitar orientación personalizada sobre el sistema.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="btn btn-whatsapp" href="https://wa.me/56944360655" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
-            </div>
-            <a class="contact-detail-link" href="https://wa.me/56944360655" target="_blank" rel="noopener noreferrer">+56 9 4436 0655</a>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-type">◈ Canal formal</div>
-            <h3>Correo electrónico</h3>
-            <p>Para mensajes más extensos, propuestas formales, coordinación editorial o consultas profesionales detalladas.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="btn btn-ghost" href="mailto:andreseliecerramirez@gmail.com">Enviar correo</a>
-            </div>
-            <a class="contact-detail-link" href="mailto:andreseliecerramirez@gmail.com">andreseliecerramirez@gmail.com</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="footer">
-        <div class="footer-left">
-          <span>ALETIA OS</span> — Método Aletia &nbsp;·&nbsp; Autorregulación, claridad mental y recursos internos
-        </div>
-        <div class="footer-right">© 2025 — Human Operating System</div>
-      </footer>
-
-    </main>
-  </div>
-
-  <!-- WhatsApp float -->
-  <a class="whatsapp-float" href="https://wa.me/56944360655" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp directo">
-    <span class="wf-dot"></span>
-    <span>WhatsApp directo</span>
-  </a>
-
-  <script>
-    // Animate bars on load with slight delay
-    document.addEventListener('DOMContentLoaded', () => {
-      // Active nav on scroll
-      const sections = document.querySelectorAll('section[id]');
-      const navItems = document.querySelectorAll('.nav-item');
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            navItems.forEach(item => {
-              item.classList.remove('active');
-              if (item.getAttribute('href') === '#' + entry.target.id) {
-                item.classList.add('active');
-              }
-            });
-          }
-        });
-      }, { threshold: 0.4 });
-
-      sections.forEach(s => observer.observe(s));
-
-      // Animate stat bars with a rolling counter feel
-      const topbarStats = document.querySelectorAll('.bar-fill');
-      topbarStats.forEach(bar => {
-        const target = bar.style.width;
-        bar.style.width = '0%';
-        setTimeout(() => {
-          bar.style.transition = 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
-          bar.style.width = target;
-        }, 400);
-      });
-
-      // Animate process bars
-      const procBars = document.querySelectorAll('.process-bar-fill');
-      procBars.forEach((bar, i) => {
-        const target = bar.style.width;
-        bar.style.width = '0%';
-        setTimeout(() => {
-          bar.style.transition = 'width 1.4s cubic-bezier(0.4, 0, 0.2, 1)';
-          bar.style.width = target;
-        }, 600 + i * 150);
-      });
-    });
-  </script>
+};
+
+var paso = 0, cuenta = {};
+var $ = function (id) { return document.getElementById(id); };
+
+function mostrarPregunta() {
+  $("vista-preguntas").hidden = false;
+  $("vista-lectura").hidden = true;
+  $("progreso").textContent = "Pregunta " + (paso + 1) + " de " + preguntas.length;
+  $("pregunta").textContent = preguntas[paso].q;
+  var cont = $("opciones");
+  cont.innerHTML = "";
+  preguntas[paso].ops.forEach(function (o) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = o.t;
+    b.onclick = function () {
+      cuenta[o.r] = (cuenta[o.r] || 0) + 1;
+      paso++;
+      if (paso < preguntas.length) { mostrarPregunta(); } else { mostrarLectura(); }
+    };
+    cont.appendChild(b);
+  });
+}
+
+function mostrarLectura() {
+  var mejor = "APAGADO", max = -1;
+  Object.keys(cuenta).forEach(function (k) { if (cuenta[k] > max) { max = cuenta[k]; mejor = k; } });
+  var L = lecturas[mejor];
+  $("progreso").textContent = "Tu lectura";
+  $("vista-preguntas").hidden = true;
+  $("vista-lectura").hidden = false;
+  $("lectura-titulo").textContent = L.titulo;
+  var cuerpo = $("lectura-cuerpo");
+  cuerpo.innerHTML = "";
+  L.cuerpo.forEach(function (t) {
+    var p = document.createElement("p");
+    p.textContent = t;
+    if (t === "No lo ves. Lo reconoces.") { p.className = "signal"; }
+    cuerpo.appendChild(p);
+  });
+  var v = $("video-sugerido");
+  v.href = L.video.u;
+  v.innerHTML = "";
+  var strong = document.createElement("span");
+  strong.textContent = "▷ " + L.video.t;
+  var small = document.createElement("small");
+  small.textContent = L.video.d + " Se abre en YouTube.";
+  v.appendChild(strong);
+  v.appendChild(small);
+  $("mensaje").textContent = "";
+  $("email").value = "";
+}
+
+$("empezar").onclick = function () {
+  document.getElementById("diagnostico").scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+$("correo").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var v = $("email").value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+    $("mensaje").textContent = "Escribe un correo válido para avisarte.";
+    return;
+  }
+  $("mensaje").textContent = "Gracias. Te escribiremos cuando esté lista la siguiente lectura.";
+});
+
+$("reiniciar").onclick = function () {
+  paso = 0; cuenta = {};
+  mostrarPregunta();
+};
+
+mostrarPregunta();
+</script>
 </body>
 </html>
