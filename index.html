@@ -65,6 +65,9 @@ form{margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
 label{display:block;font:400 15px/1.4 "Instrument Sans",system-ui,sans-serif;color:var(--muted);margin-bottom:8px}
 input[type=email]{width:100%;padding:13px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);font:400 17px "Instrument Sans",system-ui,sans-serif;margin-bottom:14px}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.embed{margin-top:40px;padding-top:28px;border-top:1px solid var(--line)}
+.embed .sub{font:400 15px/1.5 "Instrument Sans",system-ui,sans-serif;color:var(--muted);margin:0 0 16px}
+.embed iframe{display:block;width:100%;min-height:539px}
 .foot{margin-top:80px;font:400 14px/1.6 "Instrument Sans",system-ui,sans-serif;color:var(--muted)}
 [hidden]{display:none!important}
 button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -133,15 +136,13 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(-
         <a class="book" href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GN22PYVR" target="_blank" rel="noopener noreferrer">Empieza por el Método Aletia en Amazon</a>
       </div>
 
-      <form id="correo" novalidate>
-        <label for="email">Tu correo, si quieres la siguiente lectura</label>
-        <input type="email" id="email" autocomplete="email" placeholder="nombre@correo.com">
-        <div class="row">
-          <button class="btn" type="submit">Quiero la siguiente lectura</button>
-          <button class="btn btn-line" type="button" id="reiniciar">Volver a empezar</button>
-        </div>
-        <p class="note" id="mensaje" role="status" style="margin-top:14px;border:0;padding:0"></p>
-      </form>
+      <section class="embed" aria-label="Formulario de Aletia OS">
+        <p class="sub">Si quieres recibir la siguiente lectura, deja tu nombre y correo aquí.</p>
+        <iframe src="https://form.jotform.com/260436046819056" title="Aletia OS Registration" width="100%" height="539" frameborder="0" loading="lazy" style="border:0;max-width:100%"></iframe>
+      </section>
+      <div class="row" style="margin-top:28px">
+        <button class="btn btn-line" type="button" id="reiniciar">Volver a empezar</button>
+      </div>
     </div>
   </section>
 
@@ -279,23 +280,11 @@ function mostrarLectura() {
   small.textContent = L.video.d + " Se abre en YouTube.";
   v.appendChild(strong);
   v.appendChild(small);
-  $("mensaje").textContent = "";
-  $("email").value = "";
 }
 
 $("empezar").onclick = function () {
   document.getElementById("diagnostico").scrollIntoView({ behavior: "smooth", block: "start" });
 };
-
-$("correo").addEventListener("submit", function (e) {
-  e.preventDefault();
-  var v = $("email").value.trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
-    $("mensaje").textContent = "Escribe un correo válido para avisarte.";
-    return;
-  }
-  $("mensaje").textContent = "Gracias. Te escribiremos cuando esté lista la siguiente lectura.";
-});
 
 $("reiniciar").onclick = function () {
   paso = 0; cuenta = {};
