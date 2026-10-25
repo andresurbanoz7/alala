@@ -3,10 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Aletia OS: un método para notar los patrones automáticos que te condicionan y cambiar los que ya no te sirven.">
-</head>
-<body>
-<title>Aletia OS</title>
+<title>ALETIA OS | Notar los patrones que te condicionan</title>
+<meta name="description" content="Aletia OS: un método para notar los patrones automáticos que te condicionan y cambiar los que ya no te sirven. Empieza con un diagnóstico de dos minutos.">
+<meta name="theme-color" content="#0c0d12">
+<link rel="canonical" href="https://aletiaos.com/">
+<meta property="og:title" content="ALETIA OS | Notar los patrones que te condicionan">
+<meta property="og:description" content="Un método para notar los patrones automáticos que te condicionan y cambiar los que ya no te sirven. Empieza con un diagnóstico de dos minutos.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aletiaos.com/">
+<meta property="og:image" content="https://aletiaos.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -59,6 +65,8 @@ input[type=email]{width:100%;box-sizing:border-box;padding:14px 15px;border-radi
 [hidden]{display:none!important}
 .foot{margin-top:60px;color:var(--muted);font-size:14px;line-height:1.6}
 </style>
+</head>
+<body>
 
 <main class="wrap">
 
@@ -109,6 +117,7 @@ input[type=email]{width:100%;box-sizing:border-box;padding:14px 15px;border-radi
         <h3 id="lectura-titulo" style="font:500 26px/1.25 'EB Garamond',Georgia,serif;margin-bottom:8px"></h3>
         <p class="pace">Lectura de dos minutos. Puedes leer despacio.</p>
         <div class="reading" id="lectura-cuerpo"></div>
+        <p class="note">Si este malestar dura semanas o afecta tu día a día, habla con un profesional de salud. Aletia no reemplaza su apoyo.</p>
 
         <div class="next">
           <h3>Sigue por aquí</h3>
@@ -155,7 +164,7 @@ var preguntas = [
 var lecturas = {
   APAGADO: {
     titulo: "Tu sistema corre en vacío",
-    video: { t: "Protocolo de entusiasmo y frecuencia", d: "Para cuando todo cumple, pero nada enciende.", u: "https://www.youtube.com/watch?v=gs_wOWkTkYE" },
+    video: { t: "Cuando todo cumple y nada enciende", d: "Para cuando todo cumple, pero nada enciende.", u: "https://www.youtube.com/watch?v=gs_wOWkTkYE" },
     cuerpo: [
       "Nada en ti está roto.",
       "Estás apagado. Y llevas tanto tiempo así que ya te parece normal.",
@@ -171,7 +180,7 @@ var lecturas = {
   },
   RUIDO: {
     titulo: "El ruido te está anestesiando",
-    video: { t: "Reinicio del hardware biológico", d: "Para cuando el cuerpo ya no descansa aunque pares.", u: "https://www.youtube.com/watch?v=M4sCa-3mVkk" },
+    video: { t: "Cuando el cuerpo no descansa aunque pares", d: "Para cuando el cuerpo ya no descansa aunque pares.", u: "https://www.youtube.com/watch?v=M4sCa-3mVkk" },
     cuerpo: [
       "No es que no tengas tiempo para pensar.",
       "Es que cada vez que aparece un espacio vacío, algo lo llena. Un video. Una notificación. Otro video.",
@@ -186,7 +195,7 @@ var lecturas = {
   },
   LEOPARDO: {
     titulo: "Tu alarma se activa con la quietud",
-    video: { t: "Reinicio del hardware biológico", d: "Para cuando el cuerpo lee el silencio como peligro.", u: "https://www.youtube.com/watch?v=M4sCa-3mVkk" },
+    video: { t: "Cuando el silencio se siente como alarma", d: "Para cuando el cuerpo lee el silencio como peligro.", u: "https://www.youtube.com/watch?v=M4sCa-3mVkk" },
     cuerpo: [
       "Es un programa antiguo, no una prueba de peligro.",
       "Hace miles de años, el silencio y la quietud podían significar un depredador cerca. Tu cuerpo todavía lo recuerda.",
@@ -201,7 +210,7 @@ var lecturas = {
   },
   DESCENSO: {
     titulo: "Escuchas voces que no son tuyas",
-    video: { t: "Decodificación del script obsoleto", d: "Para cuando no sabes si un deseo es tuyo.", u: "https://www.youtube.com/watch?v=dJT-0j3Q5y8" },
+    video: { t: "Cuando no sabes si un deseo es tuyo", d: "Para cuando no sabes si un deseo es tuyo.", u: "https://www.youtube.com/watch?v=dJT-0j3Q5y8" },
     cuerpo: [
       "Antes de decidir qué quieres, conviene separar lo propio de lo prestado.",
       "Hay un coro dentro de tu sistema. Tiene voces de tu familia, de la escuela, de la publicidad, de quien te dijo cómo debías ser.",
