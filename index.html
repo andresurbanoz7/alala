@@ -64,9 +64,21 @@ input[type=email]{width:100%;box-sizing:border-box;padding:14px 15px;border-radi
 .note{margin-top:18px;color:var(--muted);font-size:15px}
 [hidden]{display:none!important}
 .foot{margin-top:60px;color:var(--muted);font-size:14px;line-height:1.6}
+.menu{max-width:640px;margin:0 auto;padding:26px 20px 0;display:flex;gap:10px 22px;flex-wrap:wrap;font:400 13px/1.4 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
+.menu a{color:var(--muted);text-decoration:none}
+.menu a:hover,.menu a[aria-current="page"]{color:var(--fg)}
 </style>
 </head>
 <body>
+
+<header>
+  <nav class="menu" aria-label="Principal">
+    <a href="index.html" aria-current="page">Inicio</a>
+    <a href="libros.html">Biblioteca</a>
+    <a href="alata2.html">Videos</a>
+    <a href="https://www.amazon.com/Andres-Eliecer-Ramirez-ebook/dp/B0GN22PYVR" target="_blank" rel="noopener noreferrer">Amazon</a>
+  </nav>
+</header>
 
 <main class="wrap">
 
